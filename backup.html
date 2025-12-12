@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width,initial-scale=1, user-scalable=no" name="viewport"/>
+    <title>AKISMUN — Home</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Gabriel+Sans&display=swap"
+          rel="stylesheet">
+    <!-- Favicon -->
+    <link href="img/placeholder.jpg" rel="icon">
+
+    <style>
+        :root {
+            --bg: #eae0d3;
+            --gold: #d4b168;
+            --accent: #c39f54;
+            --white: #ffffff;
+            --muted: rgba(255, 255, 255, 0.85);
+            --gold-strip-thickness: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Georgia Pro', serif;
+            background: var(--bg);
+            color: var(--white);
+            -webkit-font-smoothing: antialiased;
+            border-left: var(--gold-strip-thickness) solid var(--gold);
+            border-right: var(--gold-strip-thickness) solid var(--gold);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #233248;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        #preloader img {
+            width: 100px;
+            animation: spin 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Scroll Progress */
+        #progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--accent);
+            width: 0%;
+            z-index: 10000;
+        }
+
+        /* Header */
+        .site-header {
+            position: sticky;
+            top: 0;
+            background: #133562;
+            z-index: 1000;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .site-header::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: var(--gold);
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+
+        .brand-top {
+            position: relative;
+            font-family: 'League Spartan', sans-serif;
+            font-size: 36px;
+            color: #fff;
+            letter-spacing: 1px;
+            z-index: 1;
+        }
+
+        /* Navigation Container */
+        .main-nav {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Navigation Links */
+        .main-nav a {
+            position: relative;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 10px 18px;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Hover Effect */
+        .main-nav a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 0%;
+            left: 0;
+            bottom: 0;
+            background: var(--gold);
+            z-index: -1;
+            transition: 0.4s;
+            border-radius: 8px;
+        }
+
+        .main-nav a:hover::before {
+            height: 100%;
+        }
+
+        .main-nav a:hover {
+            color: #111;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Active link */
+        .main-nav a.active {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Optional: subtle underline animation on hover */
+        .main-nav a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 3px;
+            left: 0;
+            bottom: 4px;
+            background: var(--accent);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+
+
+        /* Hero */
+        .hero-box {
+            width: 100%;
+            height: 500px;
+            margin: 0;
+            padding: 0;
+            background-image: url("img/ActualHeader.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* align content left */
+        }
+
+        #toTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #d4b168;
+            color: #111;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            display: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        #toTop:hover {
+            background: #c39f54;
+            transform: translateY(-4px);
+        }
+
+        header, .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        section {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .schedule-box {
+            background: #ffffff;
+            color: #000;
+        }
+
+        .director-box {
+            background: #233248;
+            color: #fff;
+        }
+
+        .big-four-box {
+            background: #d4b168;
+            color: #111;
+        }
+
+        /* etc. for other sections */
+
+        /* Intro */
+        .intro-box {
+            background: #6a5b3e;
+            color: #fff;
+            text-align: center;
+        }
+
+        .intro-box img {
+            max-width: 500px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        /* Conference Section */
+        .conference-box {
+            background: #233248;
+            color: #fff;
+            text-align: center;
+        }
+
+        .conference-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .conference-section .section-title {
+            font-size: 37.8px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .conference-date {
+            font-family: 'Georgia Pro', serif;
+            font-size: 52.7px;
+            color: var(--accent);
+            text-shadow: -50px 50px 40px rgba(195, 159, 84, 0.4);
+            margin-bottom: 20px;
+            font-weight: bold
+        }
+
+        .conference-quote {
+            font-family: 'Georgia Pro', serif;
+            font-size: 40px;
+            line-height: 1.2;
+        }
+
+        .conference-quote .line1 {
+            color: #d5b573;
+        }
+
+        .conference-quote .line2, .conference-quote .line3 {
+            color: #fff;
+        }
+
+        /* All sections styling */
+        section {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+            background-color: #ffffff; /* fallback color */
+            background-image: url('img/painteffect.png'); /* texture overlay */
+            background-repeat: repeat; /* repeat the pattern */
+            background-size: cover; /* cover the section */
+            background-blend-mode: overlay; /* blend the texture with color */
+            color: #000;
+        }
+
+        .big4-title {
+            font-size: 40px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .hero {
+            width: 100%;
+            padding: 0;
+            max-width: 1000px; /* same width as hero image */
+            margin: 40px auto;
+            border-radius: 16px; /* rounded corners for a card-like effect */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* subtle shadow */
+        }
+
+
+        /* Shared grid for intro and director */
+        .intro-grid, .director-grid {
+            display: flex;
+            flex-wrap: nowrap; /* prevent wrapping */
+            gap: 24px;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .intro-text, .director-text {
+            font-size: 20px;
+            flex: 1;
+            min-width: 300px; /* ensures text doesn't get too narrow */
+        }
+
+        .intro-photo img {
+            max-width: 360px;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .director-photo img {
+            max-width: 360px;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            border: 20px solid #d4b168; /* golden border */
+        }
+
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: var(--gold);
+            color: #111;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Big 4 Cards */
+        .big-four-box {
+            background: #6a5b3e;
+            color: #111;
+        }
+
+        /* Apply paint overlay behind content */
+        .intro-box,
+        .big-four-box,
+        .exec-box,
+        .schedule-box,
+        .committees-box,
+        .conference-box {
+            position: relative; /* establishes stacking context */
+            overflow: hidden; /* ensures overlay respects corners */
+            border-radius: 16px; /* rounded corners */
+        }
+
+        .intro-box::before,
+        .big-four-box::before,
+        .exec-box::before,
+        .schedule-box::before,
+        .committees-box::before,
+        .conference-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('img/painteffect.png') repeat;
+            background-size: cover;
+            opacity: 0.1; /* Lowered opacity for subtle effect */
+            pointer-events: none;
+            border-radius: 16px;
+            z-index: 0; /* ensures overlay is behind all content */
+        }
+
+        /* Ensure content sits above overlay */
+        .intro-box > *,
+        .director-box > *,
+        .big-four-box > *,
+        .exec-box > *,
+        .schedule-box > *,
+        .committees-box > *,
+        .conference-box > * {
+            position: relative;
+            z-index: 1;
+        }
+
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns:repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #d4b168 0%, #c39f54 100%);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+            cursor: pointer;
+            font-family: 'Georgia Pro', serif;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.4s ease, filter 0.4s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .card h4 {
+            font-size: 15px;
+            color: #ffffff;
+            margin: 6px 0 4px;
+        }
+
+        .card h5 {
+            font-size: 19px;
+            color: #ffffff;
+            margin: 0 0 6px;
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: 13px;
+            color: #ffffff;
+            margin: 6px 0 4px;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px #d4b168;
+            filter: brightness(1.1);
+        }
+
+        .card:hover img {
+            transform: scale(1.08) rotate(1deg);
+            filter: brightness(1.1);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 60%);
+            transform: rotate(25deg) translateX(-200%);
+            transition: transform 0.7s ease;
+        }
+
+        .card:hover::before {
+            transform: rotate(25deg) translateX(200%);
+        }
+
+
+        /* Executive Team Section */
+        .exec-box {
+            background: #6a5b3e;
+            color: #111;
+        }
+
+        .exec-section {
+            max-width: 1000px;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .exec-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 10px 50px;
+            scroll-behavior: smooth;
+        }
+
+        .exec-container::-webkit-scrollbar {
+            height: 10px;
+        }
+
+        .exec-container::-webkit-scrollbar-thumb {
+            background: #c39f54;
+            border-radius: 5px;
+        }
+
+        .exec-card {
+            flex: 0 0 200px;
+            background: #d4b168;
+            color: #111;
+            border-radius: 8px;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+        }
+
+        .exec-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 8px;
+        }
+
+        .exec-card h5 {
+            font-size: 19px;
+            color: #ffffff;
+            margin: 0 0 6px;
+            font-weight: 600;
+        }
+
+        .exec-card p {
+            font-size: 15px;
+            color: #ffffff;
+            margin: 6px 0 4px;
+        }
+
+        .exec-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), 0 0 16px #d4b168;
+            filter: drop-shadow(0 0 16px #d4b168);
+        }
+
+        .exec-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #d4b168;
+            color: #111;
+            border: none;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            z-index: 10;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .scroll-btn:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+            background: #c39f54;
+            color: #111;
+        }
+
+        /* Buttons inside the wrapper */
+        .scroll-btn-left {
+            position: absolute;
+            left: 0;
+            z-index: 5;
+        }
+
+        .scroll-btn-right {
+            position: absolute;
+            right: 0;
+            z-index: 5;
+        }
+
+        /* Schedule Section */
+        .schedule-box {
+            background: #6a5b3e;
+            color: #111;
+            padding: 40px 20px; /* Add some padding around the table */
+            border-radius: 16px; /* Rounded section edges to match cards */
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* subtle shadow around table */
+            border-radius: 8px;
+            overflow: hidden; /* ensure rounded corners apply */
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            border: 1px solid #000; /* Black border */
+            padding: 14px;
+            text-align: center;
+            background-color: #ffffff; /* White background */
+            color: #000000; /* Black text */
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .schedule-table th {
+            background-color: #ffffff; /* White header background */
+            color: #000000; /* Black header text */
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .schedule-table tr:hover td {
+            background-color: #f2f2f2; /* Light grey on hover for row highlight */
+            transform: scale(1.01); /* subtle zoom effect on hover */
+        }
+
+        /* Introduction and Message From Director */
+        .intro-box .section-title, /* Introduction */
+        .director-box .section-title, /* Message From Director */
+        .director-box .director-name { /* ADAM RAZAQ */
+            text-align: left;
+            color: #e7dbc8;
+            font-size: 30px; /* Big Four size */
+        }
+
+        /* Executive Team cards */
+        .exec-box .exec-section .exec-card h5 {
+            font-size: 40px; /* Big Four size */
+            color: #e7dbc8; /* match director color */
+            text-align: left;
+        }
+
+        /* Conference Section */
+        .conference-box .section-title {
+            text-align: left;
+            color: #ffffff;
+            font-size: 40px;
+        }
+
+        /* Schedule Section */
+        .schedule-box .section-title {
+            text-align: center;
+            color: #ffffff;
+            font-size: 40px;
+        }
+
+        /* Committees Section */
+        .committees-box .section-title {
+            text-align: left;
+            color: #ffffff;
+            font-size: 40px;
+        }
+
+
+        /* Committees Section */
+        .committees-box {
+            background: #233248;
+            color: #fff;
+            padding: 60px 60px; /* 60px top/bottom, 40px left/right for side spacing */
+        }
+
+        .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px; /* space between cards */
+            margin-top: 40px; /* space above the grid */
+        }
+
+        .committee-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 60px 20px; /* inner spacing */
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+
+        .committee-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .committee-name {
+            text-align: center;
+            margin-top: 8px;
+            font-weight: 300;
+            font-size: 20px;
+            color: #ffffff;
+            letter-spacing: 1px; /* spacing between letters */
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* subtle shadow for depth */
+            transition: color 0.3s ease, transform 0.3s ease;
+          font-family: 'Georgia', serif;
+        }
+
+        .committee-name:hover {
+            color: #d4b168; /* golden highlight on hover */
+            transform: translateY(-2px);
+        }
+
+        .committee-card h4 {
+            color: #111;
+            margin-bottom: 6px;
+        }
+
+        .committee-card p {
+            color: #fff;
+            margin: 0;
+        }
+
+        /* Footer */
+        .site-footer {
+            padding: 28px 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: auto;
+            background: #133562;
+        }
+
+        .director-title, .intro-title {
+            color: #e7dbc8;
+            text-align: left;
+            font-size: 40px;
+            margin: 0 0 10px 0;
+        }
+
+        .committees-title {
+            color: #ffffff;
+            text-align: left;
+            font-size: 40px;
+            margin: 0 0 10px 0;
+        }
+
+        .schedule-title {
+            color: #ffffff;
+            text-align: center;
+            font-size: 40px;
+            margin: 0 0 10px 0;
+        }
+
+        .conference-title {
+            color: #ffffff;
+            text-align: left;
+            font-size: 40px;
+            margin: 0 0 10px 0;
+        }
+
+        .exec-title {
+            font-size: 40px;
+            color: #fff;
+            text-align: center;
+        }
+
+
+        /* Responsive */
+        @media (max-width: 1000px) {
+            .grid-4 {
+                grid-template-columns:repeat(2, 1fr);
+            }
+
+            .exec-container {
+                padding: 10px 20px;
+            }
+
+            .committee-grid {
+                grid-template-columns:1fr 1fr;
+            }
+
+            .section-title,
+            .big4-title,
+            .director-text
+        }
+
+        @media (max-width: 520px) {
+            .grid-4 {
+                grid-template-columns:1fr;
+            }
+
+            .exec-card {
+                flex: 0 0 150px;
+            }
+
+            .committee-grid {
+                grid-template-columns:1fr;
+            }
+
+            .section-title,
+            .big4-title,
+            .director-text
+        }
+    </style>
+</head>
+
+<body>
+<div id="preloader"><img alt="Loading..." src="img/placeholder.jpg"></div>
+<div id="progressBar"></div>
+
+<header class="site-header">
+    <div class="brand-top">AKISMUN</div>
+    <nav class="main-nav">
+        <a href="#hero">Home</a>
+        <a href="#intro">Intro</a>
+        <a href="#director">Director</a>
+        <a href="#bigfour">Big Four</a>
+        <a href="#executive">Executive Team</a>
+        <a href="#conference">Conference</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#committees">Committees</a>
+        <a href="#footer">Instagram</a>
+    </nav>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-box">
+        </div>
+    </section>
+
+
+    <!-- Introduction Section -->
+    <section class="intro-box" id="intro">
+        <h3 class="intro-title">Introduction</h3>
+        <div class="intro-grid">
+            <div class="intro-text">
+                <p class="lead">This is a sample paragraph created for testing purposes. It demonstrates the tone and
+                    structure suitable for a formal yet approachable message, such as one from a director addressing
+                    participants at an event like AKISMUN. The language is clear, concise, and encouraging, aiming to
+                    strike a balance between professionalism and inspiration without sounding overly dramatic.</p>
+            </div>
+            <div class="intro-photo">
+                <img alt="Intro Placeholder" loading="lazy" src="img/Introduction.JPG" style="width:500px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Message from Director -->
+    <section class="director-box" id="director">
+        <h2 class="director-title">Message From Director</h2>
+        <div class="director-grid">
+            <div class="director-text">
+                <p class="director-excerpt">Welcome to AKISMUN 2025. As we come together for this year’s conference, I
+                    encourage all delegates to approach each discussion with curiosity, creativity, and a willingness to
+                    think differently. Model United Nations is more than a simulation — it’s a chance to explore
+                    real-world challenges through fresh ideas and innovative thinking. </p>
+                <h3 class="director-name">- ADAM RAZAQ</h3>
+            </div>
+            <div class="director-photo">
+                <img alt="Director Adam Razaq" loading="lazy" src="img/director.png" style="width:400px;">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Big 4 Section -->
+    <section class="big-four-box" id="bigfour">
+        <h3 class="big4-title">The Big 4</h3>
+        <div class="grid-4">
+            <div class="card">
+                <img alt="Secretary General" src="img/Urooj.JPG">
+                <h5>Secretary General</h5>
+                <h4>Urooj Fatima</h4>
+                <p>This is a sample paragraph created for testing purposes.</p>
+            </div>
+            <div class="card">
+                <img alt="Deputy Secretary General" src="img/Sarika.JPG">
+                <h5>Deputy Secretary General</h5>
+                <h4>Sarika Maurya</h4>
+                <p>This is a sample paragraph created for testing purposes.</p>
+            </div>
+            <div class="card">
+                <img alt="President" src="img/Sadia.JPG">
+                <h5>President</h5>
+                <h4>Sadia Naveed</h4>
+                <p>This is a sample paragraph created for testing purposes.</p>
+            </div>
+            <div class="card">
+                <img alt="Deputy President" src="img/Ahmed.JPG">
+                <h5>Deputy President</h5>
+                <h4>Ahmed Charif</h4>
+                <p>This is a sample paragraph created for testing purposes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Executive Team -->
+    <section class="exec-box" id="executive">
+        <h2 class="exec-title">Executive Team</h2>
+
+        <div class="exec-wrapper" style="position: relative;">
+            <button class="scroll-btn scroll-btn-left" onclick="scrollExec(-1)">←</button>
+            <div class="exec-container" id="execContainer">
+                <div class="exec-card"><img alt="" src="img/Hasan.JPG"><h5>Head of IT</h5>
+                    <p>Hasan Naqvi</p></div>
+                <div class="exec-card"><img alt="" src="img/Bilal.JPG"><h5>Deputy Head of IT</h5>
+                    <p>Bilal Ramzan</p></div>
+                <div class="exec-card"><img alt="" src="img/Ehtshaam.JPG"><h5>Deputy Head of IT</h5>
+                    <p>Ehtesham Khatri</p></div>
+                <div class="exec-card"><img alt="" src="img/Aqsa.jpg"><h5>Head of Press</h5>
+                    <p>Aqsa Sajjad Ali</p></div>
+                <div class="exec-card"><img alt="" src="img/Eman.jpg"><h5>Deputy Head of Press</h5>
+                    <p>Eman Sajid</p></div>
+                <div class="exec-card"><img alt="" src="img/Imran.JPG"><h5>Deputy Head of Press</h5>
+                    <p>Muhammad Imran</p></div>
+                <div class="exec-card"><img alt="" src="img/Amshyar.JPG"><h5>Head of Admin</h5>
+                    <p>Amshyar Muhaimin</p></div>
+                <div class="exec-card"><img alt="" src="img/Muneeba.JPG"><h5>Deputy Head of Admin</h5>
+                    <p>Muneeba Maryam</p></div>
+                <div class="exec-card"><img alt="" src="img/Leilah.JPG"><h5>Deputy Head of Admin</h5>
+                    <p>Leilah Nimrah</p></div>
+                <div class="exec-card"><img alt="" src="img/Jesran.JPG"><h5>Deputy Head of Admin</h5>
+                    <p>Jesran Fathima</p></div>
+                <div class="exec-card"><img alt="" src="img/Maryam.JPG"><h5>Head of Communications</h5>
+                    <p>Maryam Soliman</p></div>
+                <div class="exec-card"><img alt="" src="img/Firdha.JPG"><h5>Deputy Head of Communications</h5>
+                    <p>Firdha Razak</p></div>
+                <div class="exec-card"><img alt="" src="img/Fatima.JPG"><h5>Head of Training</h5>
+                    <p>Fatima Ahmed</p></div>
+                <div class="exec-card"><img alt="" src="img/Aaayan.JPG"><h5>Deputy Head of Training</h5>
+                    <p>Aayan Asif</p></div>
+                <div class="exec-card"><img alt="" src="img/Fakiha.JPG"><h5>Deputy Head of Training</h5>
+                    <p>Fakiha Tajelli</p></div>
+            </div>
+            <button class="scroll-btn scroll-btn-right" onclick="scrollExec(1)">→</button>
+        </div>
+    </section>
+
+    <!-- Conference Section -->
+    <section class="conference-box" id="conference">
+        <h2 class="conference-title">Conference</h2>
+        <div class="conference-date">18 April 2026</div>
+        <div class="conference-quote">
+            <div class="line1">When the Wells run dry</div>
+            <div class="line2">“We borrowed this Earth from our children, and</div>
+            <div class="line3">we have a responsibility to uphold”</div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule-box" id="schedule">
+        <h2 class="schedule-title">Schedule</h2>
+
+        <table class="schedule-table">
+            <thead>
+            <tr>
+                <th>Time</th>
+                <th>Event</th>
+                <th>Location</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>09:00</td>
+                <td>Registration</td>
+                <td>Hall A</td>
+            </tr>
+            <tr>
+                <td>10:00</td>
+                <td>Opening Ceremony</td>
+                <td>Main Hall</td>
+            </tr>
+            <tr>
+                <td>11:00</td>
+                <td>Committee Sessions</td>
+                <td>Rooms</td>
+            </tr>
+            <tr>
+                <td>13:00</td>
+                <td>Lunch</td>
+                <td>Cafeteria</td>
+            </tr>
+            <tr>
+                <td>14:00</td>
+                <td>Workshops</td>
+                <td>Rooms</td>
+            </tr>
+            <tr>
+                <td>16:00</td>
+                <td>Closing Remarks</td>
+                <td>Main Hall</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Committees Section -->
+
+    <section class="committees-box" id="committees">
+        <h2 class="committees-title">Committees</h2>
+
+        <div class="committee-grid">
+            <div>
+                <div class="committee-card"></div>
+                <div class="committee-name">General Assembly 1</div>
+            </div>
+            <div>
+                <div class="committee-card"></div>
+                <div class="committee-name">General Assembly 2</div>
+            </div>
+            <div>
+                <div class="committee-card"></div>
+                <div class="committee-name">General Assembly 3</div>
+            </div>
+            <div>
+                <div class="committee-card"></div>
+                <div class="committee-name">United Nations Women</div>
+            </div>
+            <div>
+                <div class="committee-card"></div>
+                <div class="committee-name">ECOSOC</div>
+            </div>
+            <div>
+                <div class="committee-card"></div>
+                <div class="committee-name">Security Council</div>
+            </div>
+            <div>
+                <div class="committee-card"></div>
+                <div class="committee-name">CCPCJ</div>
+            </div>
+            <div>
+                <div class="committee-card"></div>
+                <div class="committee-name">HR Council</div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="site-footer" id="footer">
+    &copy; 2026 AKISMUN. All Rights Reserved. &nbsp; | &nbsp; <a href="https://www.instagram.com/akismun26/"
+                                                                 style="color:#c39f54;text-decoration:none;">Instagram</a>
+</footer>
+
+<script>
+    // Smooth scroll with offset for navigation menu
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', function (e) {
+            const targetID = this.getAttribute('href');
+            if (targetID.length > 1) {
+                e.preventDefault();
+                const target = document.querySelector(targetID);
+                const offset = 140;
+
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+
+    // Highlight active nav link while scrolling
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".main-nav a");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+        const scrollY = window.pageYOffset;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 200;
+            const sectionHeight = section.offsetHeight;
+
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === "#" + current) {
+                link.classList.add("active");
+            }
+        });
+    });
+</script>
+<button id="toTop">↑</button>
+
+<script>
+    const toTopBtn = document.getElementById("toTop");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 600) {
+            toTopBtn.style.display = "block";
+        } else {
+            toTopBtn.style.display = "none";
+        }
+    });
+
+    toTopBtn.addEventListener("click", () => {
+        window.scrollTo({top: 0, behavior: "smooth"});
+    });
+</script>
+
+<script>
+    // Smooth scroll active highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.main-nav a');
+
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+
+
+        sections.forEach(sec => {
+            const top = window.scrollY;
+            const offset = sec.offsetTop - 150;
+            const height = sec.offsetHeight;
+            if (top >= offset && top < offset + height) {
+                current = sec.getAttribute('id');
+            }
+        });
+
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
+<script>
+    window.addEventListener('load', function () {
+        document.getElementById('preloader').style.display = 'none';
+    });
+    window.addEventListener('scroll', function () {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('progressBar').style.width = scrolled + '%';
+    });
+
+    const execContainer = document.getElementById('execContainer');
+
+    function scrollExec(dir) {
+        execContainer.scrollBy({left: dir * 220, behavior: 'smooth'});
+    }
+
+    execContainer.addEventListener('wheel', evt => {
+        evt.preventDefault();
+        execContainer.scrollLeft += evt.deltaY;
+    });
+</script>
+</body>
+</html>
