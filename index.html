@@ -36,6 +36,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            padding:0;
         }
         .page-wrapper {
             border-left: var(--gold-strip-thickness) solid var(--gold);
@@ -47,6 +48,8 @@
 
         html {
             scroll-behavior: smooth;
+            margin:0;
+            padding:0;
         }
 
         /* Preloader */
@@ -188,7 +191,8 @@
             max-width: 1500px;
             max-height: 843px;
             aspect-ratio: 1500/843; /* Maintains the width:height ratio */
-            margin: 0 auto;
+            margin-top:0;
+            padding-top:0;
             background-image: url("img/ActualHeader.png");
             background-size: cover; /* Ensures the image covers the box */
             background-position: center;
@@ -341,7 +345,7 @@
             width: 100%;
             padding: 0;
             max-width: 1500px; /* same width as hero image */
-            margin: 40px auto;
+            margin-top:0;
             border-radius: 16px; /* rounded corners for a card-like effect */
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* subtle shadow */
         }
@@ -994,10 +998,139 @@
 
         /* Responsive */
         @media (max-width: 1200px) {
-            .big-four-grid, .exec-container, .committee-grid {
-                grid-template-columns: repeat(2, 1fr);
+
+            /* HERO */
+            .hero {
+                margin-top: 0;
+                padding-top: 0;
             }
+
+            .hero-box {
+                width: 100%;
+                height: 480px;
+                margin-top: 0;
+                background-size: cover;
+                background-position: center;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+            }
+
+            /* HEADER / NAV – remove gap source */
+            .site-header {
+                padding-top: 10px;
+                padding-bottom: 10px;
+                margin-bottom: 0;
+            }
+
+            .main-nav {
+                margin-top: 0;
+                gap: 12px;
+                justify-content: center;
+            }
+
+            .brand-top {
+                font-size: clamp(22px, 3vw, 28px);
+            }
+
+            .main-nav a {
+                font-size: clamp(14px, 1.4vw, 16px);
+                padding: 6px 12px;
+            }
+
+            /* PAGE WRAPPER */
+            :root {
+                --gold-strip-thickness: 20px;
+            }
+
+            .page-wrapper {
+                border-left: var(--gold-strip-thickness) solid var(--gold);
+                border-right: var(--gold-strip-thickness) solid var(--gold);
+            }
+
+            /* SECTION CONTAINERS */
+            .intro-box,
+            .big-four-box,
+            .exec-box,
+            .director-box,
+            .schedule-box,
+            .committees-box,
+            .conference-box {
+                margin-left: 30px;
+                margin-right: 30px;
+            }
+
+            /* TITLES */
+            .section-title,
+            .intro-title,
+            .director-title,
+            .big4-title,
+            .schedule-title,
+            .committees-title,
+            .conference-title,
+            .exec-title {
+                font-size: clamp(40px, 3.5vw, 54px);
+                text-align: center;
+            }
+
+            /* INTRO & DIRECTOR LAYOUT */
+            .intro-grid,
+            .director-grid {
+                gap: 40px;
+                align-items: center;
+            }
+
+            .intro-text,
+            .director-text {
+                max-width: 700px; /* prevents text stretching */
+                margin: 0 auto;
+                text-align: center;
+                font-size: clamp(22px, 2vw, 28px);
+                line-height: 1.45;
+            }
+
+            .intro-photo img,
+            .director-photo img {
+                max-width: 420px;
+                width: 90%;
+                margin: 0 auto;
+                border-radius: 14px;
+            }
+
+            /* BIG FOUR / EXEC */
+            .big-four-card,
+            .exec-card {
+                padding: 18px;
+            }
+
+            /* SCHEDULE */
+            .schedule-table {
+                width: 100%;
+                font-size: clamp(14px, 1.5vw, 18px);
+            }
+
+            .schedule-table th,
+            .schedule-table td {
+                padding: 14px;
+            }
+
+            /* COMMITTEES */
+            .committee-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 18px;
+            }
+
+            .committee-card {
+                padding: 24px 14px;
+                font-size: clamp(14px, 1.4vw, 16px);
+            }
+
+            .committee-name {
+                font-size: clamp(16px, 1.6vw, 18px);
+            }
+
         }
+
 
         @media (max-width: 768px) {
             .hero-box {
@@ -1442,6 +1575,8 @@
                 }
             }
     </style>
+    <title>Akis MUN 2026</title>
+    <link rel="icon" href="img/Logo.png" type="image/icon type">
 </head>
 
 <body>
@@ -1714,10 +1849,8 @@
 
 </main>
 
-<footer class="site-footer" id="footer">
-    &copy; 2026 AKISMUN. All Rights Reserved. &nbsp; | &nbsp; <a href="https://www.instagram.com/akismun26/"
-                                                                 style="color:#c39f54;text-decoration:none;">Instagram</a>
-</footer>
+
+
 
 <script>
     // Smooth scroll with offset for navigation menu
@@ -1833,6 +1966,12 @@
         execContainer.scrollLeft += evt.deltaY;
     });
 </script>
+</div>
+<div class = footer>
+    <footer class="site-footer" id="footer">
+        &copy; 2026 AKISMUN. All Rights Reserved. &nbsp; | &nbsp; <a href="https://www.instagram.com/akismun26/"
+                                                                     style="color:#c39f54;text-decoration:none;">Instagram</a>
+    </footer>
 </div>
 </body>
 </html>
