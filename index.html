@@ -3,13 +3,10 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width,initial-scale=1, user-scalable=no" name="viewport"/>
-    <title>AKISMUN — Home</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Gabriel+Sans&display=swap"
           rel="stylesheet">
-    <!-- Favicon -->
-    <link href="img/placeholder.jpg" rel="icon">
 
     <style>
         :root {
@@ -19,6 +16,12 @@
             --white: #ffffff;
             --muted: rgba(255, 255, 255, 0.85);
             --gold-strip-thickness: 20px;
+        }
+        .page-wrapper {
+            border-left: var(--gold-strip-thickness) solid var(--gold);
+            border-right: var(--gold-strip-thickness) solid var(--gold);
+            min-height: 100vh;
+            background: var(--bg);
         }
 
         * {
@@ -36,22 +39,13 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            padding:0;
         }
-        .page-wrapper {
-            border-left: var(--gold-strip-thickness) solid var(--gold);
-            border-right: var(--gold-strip-thickness) solid var(--gold);
-            min-height: 100vh;
-            background: var(--bg);
-        }
-
 
         html {
             scroll-behavior: smooth;
             margin:0;
             padding:0;
         }
-
         /* Scroll Progress */
         #progressBar {
             position: fixed;
@@ -82,6 +76,17 @@
             color: #fff;
             letter-spacing: 1px;
             z-index: 1;
+        }
+
+        /* Navigation Container */
+        .main-nav {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            z-index: 2;
+            position: relative;
         }
 
         /* Navigation Container */
@@ -343,6 +348,30 @@
             font-size: 30px;
             flex: 1;
             min-width: 300px; /* ensures text doesn't get too narrow */
+        }
+
+        .intro-photo img {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Shared grid for intro and director */
+        .intro-grid, .director-grid {
+            display: flex;
+            flex-wrap: nowrap; /* prevent wrapping */
+            gap: 24px;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .intro-text, .director-text {
+            font-size: 30px;
+            flex: 1;
+            min-width: 300px; /* ensures text doesn't get too narrow */
             max-width: 750px;
         }
 
@@ -391,22 +420,18 @@
         .intro-box,
         .big-four-box,
         .exec-box,
-        .director-box,
         .schedule-box,
         .committees-box,
         .conference-box {
             position: relative; /* establishes stacking context */
             overflow: hidden; /* ensures overlay respects corners */
             border-radius: 16px; /* rounded corners */
-            margin-left: 20px;
-            margin-right: 20px;
         }
 
         .intro-box::before,
         .big-four-box::before,
         .exec-box::before,
         .schedule-box::before,
-        .director-box::before,
         .committees-box::before,
         .conference-box::before {
             content: "";
@@ -967,7 +992,6 @@
             text-align: center;
         }
 
-
         /* Responsive */
         @media (max-width: 1200px) {
 
@@ -1028,8 +1052,8 @@
             .schedule-box,
             .committees-box,
             .conference-box {
-                margin-left: 30px;
-                margin-right: 30px;
+                margin-left: 20px;
+                margin-right: 20px;
             }
 
             /* TITLES */
@@ -1070,9 +1094,11 @@
             }
 
             /* BIG FOUR / EXEC */
-            .big-four-card,
             .exec-card {
                 padding: 18px;
+            }
+            .big-four-card {
+                padding: 2px;
             }
 
             /* SCHEDULE */
@@ -1085,7 +1111,12 @@
             .schedule-table td {
                 padding: 14px;
             }
-
+            .big-four-text {
+                font-size: 18px;
+                color: #ffffff;
+                line-height: 1.5;
+                margin: 0 auto;
+            }
             /* COMMITTEES */
             .committee-grid {
                 grid-template-columns: repeat(4, 1fr);
@@ -1093,7 +1124,7 @@
             }
 
             .committee-card {
-                padding: 24px 14px;
+                padding: 50px 20px;
                 font-size: clamp(14px, 1.4vw, 16px);
             }
 
@@ -1312,8 +1343,8 @@
             }
 
             .committee-card {
-                padding: 22px 12px;
-                font-size: clamp(12px, 2.8vw, 16px);
+                padding: 40px 20px;
+                font-size: clamp(12px, 2.8vw, 14px);
             }
 
             .committee-name {
@@ -1533,11 +1564,11 @@
                 /* Committees section - 3 columns but smaller cards */
                 .committee-grid {
                     grid-template-columns: repeat(2, 1fr); /* 3 columns */
-                    gap: 12px; /* smaller gap between cards */
+                    gap: 20px; /* smaller gap between cards */
                 }
 
                 .committee-card {
-                    padding: 20px 10px; /* reduce padding */
+                    padding: 30px 10px; /* reduce padding */
                     font-size: clamp(10px, 2.5vw, 14px); /* scale text for small cards */
                 }
 
@@ -1547,7 +1578,7 @@
                 }
             }
     </style>
-    <title>Akis MUN 2026</title>
+    <title>AKIS MUN 2026</title>
     <link rel="icon" href="img/Logo.png" type="image/icon type">
 </head>
 
