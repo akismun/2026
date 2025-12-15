@@ -46,6 +46,7 @@
             margin:0;
             padding:0;
         }
+
         /* Scroll Progress */
         #progressBar {
             position: fixed;
@@ -347,31 +348,7 @@
         .intro-text, .director-text {
             font-size: 30px;
             flex: 1;
-            min-width: 300px; /* ensures text doesn't get too narrow */
-        }
-
-        .intro-photo img {
-            max-width: 400px;
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Shared grid for intro and director */
-        .intro-grid, .director-grid {
-            display: flex;
-            flex-wrap: nowrap; /* prevent wrapping */
-            gap: 24px;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .intro-text, .director-text {
-            font-size: 30px;
-            flex: 1;
-            min-width: 300px; /* ensures text doesn't get too narrow */
+            min-width: 200px; /* ensures text doesn't get too narrow */
             max-width: 750px;
         }
 
@@ -1065,32 +1042,35 @@
             .committees-title,
             .conference-title,
             .exec-title {
-                font-size: clamp(40px, 3.5vw, 54px);
+                font-size: clamp(50px, 3.5vw, 54px);
                 text-align: center;
             }
 
-            /* INTRO & DIRECTOR LAYOUT */
-            .intro-grid,
-            .director-grid {
-                gap: 40px;
+            .director-grid,
+            .intro-grid {
+                flex-direction: column;
                 align-items: center;
+                gap: 25px;
             }
-
-            .intro-text,
-            .director-text {
-                max-width: 700px; /* prevents text stretching */
-                margin: 0 auto;
-                text-align: center;
-                font-size: clamp(22px, 2vw, 28px);
-                line-height: 1.45;
-            }
-
-            .intro-photo img,
-            .director-photo img {
-                max-width: 420px;
+            .director-text,
+            .intro-text {
+                order:1;
                 width: 90%;
+                text-align: center;
+                font-size: clamp(20px, 4vw, 28px);
+                line-height: 1.4;
+            }
+
+            .director-photo img {
+                width: 85%;
+                max-width: 500px;
+                height: auto;
+                order: 2;
                 margin: 0 auto;
-                border-radius: 14px;
+                border-radius: 12px;
+            }
+            .intro-photo img {
+                max-width: 600px;
             }
 
             /* BIG FOUR / EXEC */
@@ -1112,7 +1092,7 @@
                 padding: 14px;
             }
             .big-four-text {
-                font-size: 18px;
+                font-size: 15px;
                 color: #ffffff;
                 line-height: 1.5;
                 margin: 0 auto;
@@ -1330,7 +1310,9 @@
             }
 
 
-
+            .intro-box,.director-box {
+                padding: 0px 10px;
+            }
             .director-name {
                 font-size: 24px;
                 text-align: center;
@@ -1549,10 +1531,13 @@
                 .intro-text {
                     width: 90%;
                     text-align: center;
-                    font-size: clamp(18px, 4.5vw, 25px) !important;
+                    font-size: clamp( 10px,5vw, 15px); !important
                     line-height: 1.4;
                 }
 
+                .intro-box,.director-box {
+                    padding: 0px 10px;
+                }
 
                 /* Director name - smaller and neat */
                 .director-name {
