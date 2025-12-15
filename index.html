@@ -31,14 +31,19 @@
             background: var(--bg);
             color: var(--white);
             -webkit-font-smoothing: antialiased;
-            border-left: var(--gold-strip-thickness) solid var(--gold);
-            border-right: var(--gold-strip-thickness) solid var(--gold);
             overflow-x: hidden;
             scroll-behavior: smooth;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
+        .page-wrapper {
+            border-left: var(--gold-strip-thickness) solid var(--gold);
+            border-right: var(--gold-strip-thickness) solid var(--gold);
+            min-height: 100vh;
+            background: var(--bg);
+        }
+
 
         html {
             scroll-behavior: smooth;
@@ -1309,6 +1314,7 @@
                     text-align: center;
                 }
             }
+        }
     </style>
 </head>
 
@@ -1329,6 +1335,7 @@
     </nav>
 </header>
 
+<div class = "page-wrapper">
 <main>
     <!-- Hero Section -->
     <section class="hero" id="hero">
@@ -1696,5 +1703,6 @@
         execContainer.scrollLeft += evt.deltaY;
     });
 </script>
+</div>
 </body>
 </html>
