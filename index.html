@@ -92,7 +92,7 @@
         .site-header {
             position: sticky;
             top: 0;
-            background: #133562;
+            background: #233248;
             z-index: 1000;
             padding: 20px 0;
             text-align: center;
@@ -186,14 +186,14 @@
         .hero-box {
             width: 100%;
             max-width: 1500px;
-            height: auto;
+            max-height: 843px;
             aspect-ratio: 1500/843; /* Maintains the width:height ratio */
             margin: 0 auto;
             background-image: url("img/ActualHeader.png");
             background-size: cover; /* Ensures the image covers the box */
             background-position: center;
             background-repeat: no-repeat;
-            display: flex;
+            display: block;
             align-items: center;
             justify-content: flex-start;
         }
@@ -367,10 +367,11 @@
             font-size: 30px;
             flex: 1;
             min-width: 300px; /* ensures text doesn't get too narrow */
+            max-width: 750px;
         }
 
         .intro-photo img {
-            max-width: 400px;
+            max-width: 450px;
             width: 100%;
             height: auto;
             border-radius: 12px;
@@ -414,18 +415,22 @@
         .intro-box,
         .big-four-box,
         .exec-box,
+        .director-box,
         .schedule-box,
         .committees-box,
         .conference-box {
             position: relative; /* establishes stacking context */
             overflow: hidden; /* ensures overlay respects corners */
             border-radius: 16px; /* rounded corners */
+            margin-left: 20px;
+            margin-right: 20px;
         }
 
         .intro-box::before,
         .big-four-box::before,
         .exec-box::before,
         .schedule-box::before,
+        .director-box::before,
         .committees-box::before,
         .conference-box::before {
             content: "";
@@ -832,18 +837,19 @@
             background-color: #ffffff; /* White background */
             color: #000000; /* Black text */
             transition: background 0.3s, transform 0.2s;
+            font-size: 25px;
         }
 
         .schedule-table th {
             background-color: #ffffff; /* White header background */
             color: #000000; /* Black header text */
             font-weight: 700;
-            font-size: 16px;
         }
 
         .schedule-table tr:hover td {
             background-color: #f2f2f2; /* Light grey on hover for row highlight */
             transform: scale(1.01); /* subtle zoom effect on hover */
+
         }
 
         /* Introduction and Message From Director */
@@ -853,6 +859,8 @@
             text-align: left;
             color: #e7dbc8;
             font-size: 40px; /* Big Four size */
+            margin-left: 20px;
+            margin-right: 20px
         }
 
         /* Executive Team cards */
@@ -860,6 +868,7 @@
             font-size: 40px; /* Big Four size */
             color: #e7dbc8; /* match director color */
             text-align: left;
+
         }
 
         /* Conference Section */
@@ -945,7 +954,7 @@
             text-align: center;
             color: rgba(255, 255, 255, 0.7);
             margin-top: auto;
-            background: #133562;
+            background: #233248;
         }
 
         .director-title, .intro-title {
@@ -991,156 +1000,272 @@
         }
 
         @media (max-width: 768px) {
-            @media (max-width: 768px) {
-                /* Navigation adjustments */
-                .site-header {
-                    padding: 12px 0;
-                }
+            .hero-box {
+                width: 100%;
+                max-width: 1500px;
+                height: 400px;
+                background-image: url("img/smallerheader.png");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+            }
 
-                .brand-top {
-                    font-size: clamp(20px, 4vw, 28px);
-                }
+            :root {
+                --gold-strip-thickness: 18px;
+            }
 
-                .main-nav {
-                    gap: 12px;
-                    margin-top: 6px;
-                    justify-content: center;
-                }
+            .intro-box,
+            .big-four-box,
+            .exec-box,
+            .director-box,
+            .schedule-box,
+            .committees-box,
+            .conference-box {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            .big-four-text {
+                font-size: 18px;
+                color: #ffffff;
+                line-height: 1.5;
+                margin: 0 auto;
+            }
+            .page-wrapper {
+                border-left: var(--gold-strip-thickness) solid var(--gold);
+                border-right: var(--gold-strip-thickness) solid var(--gold);
+                min-height: 100vh;
+                background: var(--bg);
+            }
 
-                .main-nav a {
-                    font-size: clamp(12px, 2.5vw, 16px);
-                    padding: 6px 12px;
-                }
+            .section-title,
+            .intro-title,
+            .director-title,
+            .big4-title,
+            .schedule-title,
+            .committees-title,
+            .conference-title,
+            .exec-title {
+                font-size: clamp(36px, 4.5vw, 48px);
+                line-height: 1.2;
+                text-align: center;
+            }
 
-                .main-nav a::after {
-                    bottom: 2px;
-                }
+            .big-four-card, .exec-card, .committee-card {
+                padding: 14px;
+            }
 
-                /* Stack director and intro vertically */
-                .director-grid,
-                .intro-grid {
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 20px;
-                }
+            .schedule-table th, .schedule-table td {
+                font-size: clamp(10px, 2.5vw, 16px);
+                padding: 10px;
+            }
 
-                /* Smaller images for director and intro */
-                .director-photo img,
-                .intro-photo img {
-                    width: 70%;
-                    max-width: 300px;
-                    height: auto;
-                    order: 2;
-                    margin: 0 auto;
-                    border-radius: 12px;
-                }
+            .conference-box {
+                padding: 50px 30px;
+                min-height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
 
-                /* Main text adjustments */
-                .director-text,
-                .intro-text {
-                    width: 90%;
-                    text-align: center;
-                    font-size: clamp(18px, 4.5vw, 28px) !important;
-                    line-height: 1.4;
-                }
+            .conference-date {
+                font-size: clamp(28px, 10vw, 48px);
+                line-height: 1.1;
+                text-align: center;
+                padding: 0;
+                white-space: normal;
+                margin-bottom: 25px;
+            }
 
-                .director-title,
-                .intro-title {
-                    font-size: clamp(22px, 5vw, 32px) !important;
-                }
+            .conference-quote .line1 {
+                font-size: clamp(12px, 8vw, 22px);
+                line-height: 1.1;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                white-space: normal;
+            }
 
-                .director-name {
-                    font-size: 22px !important;
-                    text-align: center !important;
-                    margin-bottom: 12px;
-                }
+            .conference-quote .line2, .conference-quote .line3 {
+                font-size: clamp(12px, 7.5vw, 22px);
+                line-height: 1.1;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                white-space: normal;
+                display: block;
+            }
 
-                /* Conference adjustments */
-                .conference-date {
-                    font-size: clamp(24px, 10vw, 50px);
-                    line-height: 1.1;
-                    text-align: center;
-                }
+            .site-header {
+                padding: 8px 0;
+            }
 
-                .conference-quote .line1 {
-                    font-size: clamp(14px, 9vw, 40px);
-                    line-height: 1.1;
-                    text-align: center;
-                }
+            .brand-top {
+                font-size: clamp(18px, 4.5vw, 26px);
+            }
 
-                .conference-quote .line2,
-                .conference-quote .line3 {
-                    font-size: clamp(12px, 8vw, 40px);
-                    line-height: 1.1;
-                    text-align: center;
-                    display: block;
-                }
+            .main-nav {
+                gap: 10px;
+                margin-top: 6px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
 
-                .conference-quote {
-                    width: 95%;
-                    margin: 0 auto;
-                }
+            .main-nav a {
+                font-size: clamp(12px, 3vw, 16px);
+                padding: 6px 10px;
+            }
 
-                /* Hero adjustments */
-                .hero {
-                    max-height: 55vh;
-                }
+            .main-nav a::after {
+                bottom: 2px;
+            }
 
-                .hero-box {
-                    max-height: 55vh;
-                }
+            .conference-quote {
+                width: 90%;
+                margin: 0 auto;
+            }
 
-                /* Schedule table */
-                .schedule-table th, .schedule-table td {
-                    font-size: clamp(10px, 2.5vw, 16px);
-                    padding: 10px;
-                }
+            .schedule-table {
+                width: 100%;
+                font-size: clamp(14px, 3vw, 18px);
+                margin-top: 25px;
+            }
 
-                /* Committees - stack if needed */
-                .committee-grid {
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 20px;
-                }
+            .intro-grid, .director-grid, .big-four-grid {
+                grid-template-columns: 1fr;
+            }
 
-                .intro-grid, .director-grid, .big-four-grid {
-                    grid-template-columns: 1fr; /* stack vertically */
-                }
+            .schedule-table th,
+            .schedule-table td {
+                padding: 14px;
+                font-size: clamp(14px, 3vw, 18px);
+            }
 
-                .exec-container {
-                    grid-template-columns: repeat(2, 1fr);
-                }
+            .schedule-table tr {
+                height: auto;
+            }
 
-                .intro-text, .director-text, .big-four-text, .exec-card p {
-                    font-size: clamp(10px, 3vw, 22px);
-                }
+            .hero {
+                max-height: 60vh;
+            }
 
-                .intro-photo img, .director-photo img, .big-four-photo, .exec-card img {
-                    max-width: 100%;
-                    height: auto;
-                }
+            .hero-box {
+                max-height: 60vh;
+            }
 
-                .hero {
-                    max-height: 60vh;
-                }
+            .hero .hero-text {
+                font-size: clamp(14px, 6vw, 40px);
+            }
 
-                .hero-box {
-                    max-height: 60vh;
-                }
+            .director-grid,
+            .intro-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 25px;
+            }
+            .director-text,
+            .intro-text {
+                order:1;
+                width: 90%;
+                text-align: center;
+                font-size: clamp(20px, 4vw, 28px);
+                line-height: 1.4;
+            }
 
-                .hero .hero-text {
-                    font-size: clamp(14px, 6vw, 48px);
-                }
+            .director-photo img {
+                width: 85%;
+                max-width: 300px;
+                height: auto;
+                order: 2;
+                margin: 0 auto;
+                border-radius: 12px;
+            }
 
-                .director-photo img {
-                    width: 70%;
-                    max-width: 250px;
-                    margin: 0 auto;
-                }
+            .intro-photo img {
+                width: 85%;
+                max-width: 450px;
+                height: auto;
+                order: 2;
+                margin: 0 auto;
+                border-radius: 12px;
+            }
+
+
+
+            .director-name {
+                font-size: 24px;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            .committee-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 14px;
+            }
+
+            .committee-card {
+                padding: 22px 12px;
+                font-size: clamp(12px, 2.8vw, 16px);
+            }
+
+            .committee-name {
+                font-size: clamp(14px, 3.2vw, 18px);
+                text-align: center;
+            }
+            .lead{
+                margin-top: 0;
+            }
             }
 
             @media (max-width: 480px) {
-                .section-title, .intro-title, .director-title, .big4-title, .exec-title {
-                    font-size: clamp(18px, 5vw, 32px);
+                .hero-box {
+
+                    width: 100%;
+                    max-width: 1500px;
+                    height: 300px;
+                    background-image: url("img/smallerheader.png");
+                    background-size: cover; /* Ensures the image covers the box */
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                }
+                :root {
+                    --gold-strip-thickness: 15px;
+                }
+                .intro-box,
+                .big-four-box,
+                .exec-box,
+                .director-box,
+                .schedule-box,
+                .committees-box,
+                .conference-box {
+                    margin-left: 10px;
+                    margin-right: 10px;
+                }
+                .page-wrapper {
+                    border-left: var(--gold-strip-thickness) solid var(--gold);
+                    border-right: var(--gold-strip-thickness) solid var(--gold);
+                    min-height: 100vh;
+                    background: var(--bg);
+                }
+
+                /* ALL section titles – unified size */
+                .section-title,
+                .intro-title,
+                .director-title,
+                .big4-title,
+                .schedule-title,
+                .committees-title,
+                .conference-title,
+                .exec-title {
+                    font-size: clamp(32px, 5vw, 40px) !important;
+                    line-height: 1.2;
+                    text-align: center;
                 }
 
                 .big-four-card, .exec-card, .committee-card {
@@ -1164,12 +1289,12 @@
 
                 /* Conference date fills the screen */
                 .conference-date {
-                    font-size: clamp(24px, 12vw, 40px); /* min 24px, max 60px, scales with screen */
+                    font-size: clamp(24px, 12vw, 35px); /* min 24px, max 60px, scales with screen */
                     line-height: 1.1;
                     text-align: center;
-                    margin: 0;
                     padding: 0;
                     white-space: normal; /* allows wrapping if needed */
+                    margin-bottom: 20px;
                 }
 
                 /* Conference quote lines */
@@ -1266,10 +1391,17 @@
                 }
 
                 /* Make images smaller to leave space from screen edges */
-                .director-photo img,
+                .director-photo img {
+                    width: 80%;
+                    max-width: 200px;
+                    height: auto;
+                    order: 2;
+                    margin: 0 auto;
+                    border-radius: 12px;
+                }
                 .intro-photo img {
                     width: 80%;
-                    max-width: 280px;
+                    max-width: 300px;
                     height: auto;
                     order: 2;
                     margin: 0 auto;
@@ -1281,15 +1413,10 @@
                 .intro-text {
                     width: 90%;
                     text-align: center;
-                    font-size: clamp(18px, 4.5vw, 28px) !important;
+                    font-size: clamp(18px, 4.5vw, 25px) !important;
                     line-height: 1.4;
                 }
 
-                /* Titles */
-                .director-title,
-                .intro-title {
-                    font-size: clamp(22px, 5vw, 32px) !important;
-                }
 
                 /* Director name - smaller and neat */
                 .director-name {
@@ -1314,7 +1441,6 @@
                     text-align: center;
                 }
             }
-        }
     </style>
 </head>
 
@@ -1339,8 +1465,12 @@
 <main>
     <!-- Hero Section -->
     <section class="hero" id="hero">
-        <div class="hero-box">
+        <div class="hero-inner">
+            <div class="hero-box">
+            </div>
+
         </div>
+
     </section>
 
 
