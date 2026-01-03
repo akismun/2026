@@ -70,15 +70,6 @@
         }
 
 
-        .brand-top {
-            position: relative;
-            font-family: 'League Spartan', sans-serif;
-            font-size: 36px;
-            color: #fff;
-            letter-spacing: 1px;
-            z-index: 1;
-        }
-
         /* Navigation Container */
         .main-nav {
             display: flex;
@@ -686,6 +677,8 @@
             gap: 30px;
             padding: 10px 50px;
             scroll-behavior: smooth;
+            scroll-padding-inline: 16px; /* matches your side padding */
+
         }
 
         /* Scrollbar */
@@ -708,6 +701,7 @@
             padding: 20px;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+            scroll-snap-align: center;
         }
 
         /* Hover effect */
@@ -773,6 +767,25 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             z-index: 10;
+        }
+        .scroll-btn {
+            transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+        }
+
+        .scroll-btn:active {
+            transform: scale(0.92);
+        }
+
+        .scroll-btn.is-scrolling {
+            transform: scale(0.95);
+            box-shadow: 0 0 14px rgba(212, 177, 104, 0.8);
+        }
+
+        .scroll-btn:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
         .scroll-btn-left {
@@ -1350,6 +1363,13 @@
             }
 
         @media (max-width: 480px) {
+            .exec-container{
+                padding: 0 0;
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x mandatory;
+            }
+
                 .hero-box {
 
                     width: 100%;
@@ -1366,6 +1386,9 @@
                 :root {
                     --gold-strip-thickness: 15px;
                 }
+                .exec-card{
+                    scroll-snap-align: start;
+                }
                 .intro-box,
                 .big-four-box,
                 .exec-box,
@@ -1375,7 +1398,7 @@
                 .conference-box {
                     margin-left: 10px;
                     margin-right: 10px;
-                    padding: 0px 20px
+                    padding: 0 20px
                 }
                 .page-wrapper {
                     border-left: var(--gold-strip-thickness) solid var(--gold);
@@ -1452,10 +1475,6 @@
                 /* Navigation adjustments - smaller */
                 .site-header {
                     padding: 6px 0; /* minimal top/bottom padding */
-                }
-
-                .brand-top {
-                    font-size: clamp(16px, 5vw, 22px); /* smaller brand/title */
                 }
 
                 .main-nav {
@@ -1826,7 +1845,7 @@
             </div>
             <div>
                 <div class="committee-card"></div>
-                <div class="committee-name">United Nations Women</div>
+                <div class="committee-name">General Assembly 4</div>
             </div>
             <div>
                 <div class="committee-card"></div>
@@ -1899,7 +1918,6 @@
     });
 </script>
 <button id="toTop">↑</button>
-
 <script>
     const toTopBtn = document.getElementById("toTop");
 
@@ -1951,18 +1969,187 @@
         const scrolled = (winScroll / height) * 100;
         document.getElementById('progressBar').style.width = scrolled + '%';
     });
+        function scrollExec(direction) {
+            const container = document.getElementById('execContainer');
+            const card = container.querySelector('.exec-card');
 
-    const execContainer = document.getElementById('execContainer');
+            if (!card) return;
 
-    function scrollExec(dir) {
-        execContainer.scrollBy({left: dir * 220, behavior: 'smooth'});
-    }
+            const gap = parseInt(getComputedStyle(container).gap) || 0;
+            const scrollAmount = card.offsetWidth + gap;
 
-    execContainer.addEventListener('wheel', evt => {
-        evt.preventDefault();
-        execContainer.scrollLeft += evt.deltaY;
-    });
+            container.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
 </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.querySelector(".exec-container");
+            const cards = Array.from(container.querySelectorAll(".exec-card"));
+            const prevBtn = document.getElementById("scroll-btn-left");
+            const nextBtn = document.getElementById("scroll-btn-right");
+
+            function cardsWidth() {
+                const card = execContainer.querySelector(".exec-card");
+                return card ? card.offsetWidth + 20 : 220;
+            }
+
+            function scrollExec(direction) {
+                const btn = direction === -1 ? prevBtn : nextBtn;
+
+                // animate button
+                btn.classList.add("is-scrolling");
+
+                execContainer.scrollBy({
+                    left: direction * cardsWidth(),
+                    behavior: "smooth"
+                });
+
+                // remove animation after scroll settles
+                setTimeout(() => {
+                    btn.classList.remove("is-scrolling");
+                }, 300);
+            }
+
+            if (!container || cards.length === 0) return;
+
+            let isDragging = false;
+            let snapTimeout = null;
+
+            // --------------------------------------------------
+            // Helpers
+            // --------------------------------------------------
+
+            function cardWidth() {
+                return cards[0].offsetWidth +
+                    parseInt(getComputedStyle(container).gap || 0);
+            }
+
+            function maxScroll() {
+                return container.scrollWidth - container.clientWidth;
+            }
+
+            function clampScroll() {
+                if (container.scrollLeft < 0) {
+                    container.scrollLeft = 0;
+                }
+                if (container.scrollLeft > maxScroll()) {
+                    container.scrollLeft = maxScroll();
+                }
+            }
+
+            function updateButtons() {
+                if (!prevBtn || !nextBtn) return;
+
+                prevBtn.disabled = container.scrollLeft <= 2;
+                nextBtn.disabled = container.scrollLeft >= maxScroll() - 2;
+            }
+
+            function snapToNearestCard() {
+                if (isDragging) return;
+
+                const width = cardWidth();
+                const index = Math.round(container.scrollLeft / width);
+                const target = index * width;
+
+                container.scrollTo({
+                    left: Math.min(Math.max(target, 0), maxScroll()),
+                    behavior: "smooth"
+                });
+            }
+
+            // --------------------------------------------------
+            // Wheel scroll → horizontal (DESKTOP ONLY)
+            // --------------------------------------------------
+
+            container.addEventListener("wheel", (e) => {
+                if (window.innerWidth <= 768) return; // disable wheel on mobile
+
+                e.preventDefault();
+
+                container.scrollBy({
+                    left: Math.sign(e.deltaY) * cardWidth(),
+                    behavior: "smooth"
+                });
+
+                clearTimeout(snapTimeout);
+                snapTimeout = setTimeout(snapToNearestCard, 200);
+            }, { passive: false });
+
+            // --------------------------------------------------
+            // Buttons → one card at a time
+            // --------------------------------------------------
+
+            prevBtn?.addEventListener("click", () => {
+                container.scrollBy({
+                    left: -cardWidth(),
+                    behavior: "smooth"
+                });
+            });
+
+            nextBtn?.addEventListener("click", () => {
+                container.scrollBy({
+                    left: cardWidth(),
+                    behavior: "smooth"
+                });
+            });
+
+            // --------------------------------------------------
+            // Drag detection (disable snap while dragging)
+            // --------------------------------------------------
+
+            container.addEventListener("mousedown", () => {
+                isDragging = true;
+            });
+
+            container.addEventListener("touchstart", () => {
+                isDragging = true;
+            }, { passive: true });
+
+            window.addEventListener("mouseup", () => {
+                isDragging = false;
+                snapToNearestCard();
+            });
+
+            container.addEventListener("touchend", () => {
+                isDragging = false;
+                snapToNearestCard();
+            });
+
+            // --------------------------------------------------
+            // Scroll handling (edge locking + buttons)
+            // --------------------------------------------------
+
+            container.addEventListener("scroll", () => {
+                requestAnimationFrame(() => {
+                    clampScroll();
+                    updateButtons();
+                });
+
+                clearTimeout(snapTimeout);
+                snapTimeout = setTimeout(snapToNearestCard, 200);
+            });
+
+            // --------------------------------------------------
+            // Initial state
+            // --------------------------------------------------
+
+            container.scrollLeft = 0;
+            updateButtons();
+        });
+    </script>
+
+
+
+
+    }
+</script>
+    <script>
+
+    </script>
+
 </div>
     
 <div class = footer>
