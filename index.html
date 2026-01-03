@@ -1991,28 +1991,6 @@
             const prevBtn = document.getElementById("scroll-btn-left");
             const nextBtn = document.getElementById("scroll-btn-right");
 
-            function cardsWidth() {
-                const card = execContainer.querySelector(".exec-card");
-                return card ? card.offsetWidth + 20 : 220;
-            }
-
-            function scrollExec(direction) {
-                const btn = direction === -1 ? prevBtn : nextBtn;
-
-                // animate button
-                btn.classList.add("is-scrolling");
-
-                execContainer.scrollBy({
-                    left: direction * cardsWidth(),
-                    behavior: "smooth"
-                });
-
-                // remove animation after scroll settles
-                setTimeout(() => {
-                    btn.classList.remove("is-scrolling");
-                }, 300);
-            }
-
             if (!container || cards.length === 0) return;
 
             let isDragging = false;
@@ -2021,7 +1999,6 @@
             // --------------------------------------------------
             // Helpers
             // --------------------------------------------------
-
             function cardWidth() {
                 return cards[0].offsetWidth +
                     parseInt(getComputedStyle(container).gap || 0);
@@ -2032,23 +2009,19 @@
             }
 
             function clampScroll() {
-                if (container.scrollLeft < 0) {
-                    container.scrollLeft = 0;
-                }
-                if (container.scrollLeft > maxScroll()) {
-                    container.scrollLeft = maxScroll();
-                }
+                if (container.scrollLeft < 0) container.scrollLeft = 0;
+                if (container.scrollLeft > maxScroll()) container.scrollLeft = maxScroll();
             }
 
             function updateButtons() {
                 if (!prevBtn || !nextBtn) return;
-
                 prevBtn.disabled = container.scrollLeft <= 2;
                 nextBtn.disabled = container.scrollLeft >= maxScroll() - 2;
             }
 
             function snapToNearestCard() {
                 if (isDragging) return;
+                if (window.innerWidth <= 768) return; // disable snapping on mobile
 
                 const width = cardWidth();
                 const index = Math.round(container.scrollLeft / width);
@@ -2063,12 +2036,10 @@
             // --------------------------------------------------
             // Wheel scroll → horizontal (DESKTOP ONLY)
             // --------------------------------------------------
-
             container.addEventListener("wheel", (e) => {
                 if (window.innerWidth <= 768) return; // disable wheel on mobile
 
                 e.preventDefault();
-
                 container.scrollBy({
                     left: Math.sign(e.deltaY) * cardWidth(),
                     behavior: "smooth"
@@ -2081,7 +2052,6 @@
             // --------------------------------------------------
             // Buttons → one card at a time
             // --------------------------------------------------
-
             prevBtn?.addEventListener("click", () => {
                 container.scrollBy({
                     left: -cardWidth(),
@@ -2099,53 +2069,34 @@
             // --------------------------------------------------
             // Drag detection (disable snap while dragging)
             // --------------------------------------------------
-
-            container.addEventListener("mousedown", () => {
-                isDragging = true;
-            });
-
-            container.addEventListener("touchstart", () => {
-                isDragging = true;
-            }, { passive: true });
-
-            window.addEventListener("mouseup", () => {
-                isDragging = false;
-                snapToNearestCard();
-            });
-
-            container.addEventListener("touchend", () => {
-                isDragging = false;
-                snapToNearestCard();
-            });
+            container.addEventListener("mousedown", () => { isDragging = true; });
+            container.addEventListener("touchstart", () => { isDragging = true; }, { passive: true });
+            window.addEventListener("mouseup", () => { isDragging = false; snapToNearestCard(); });
+            container.addEventListener("touchend", () => { isDragging = false; snapToNearestCard(); });
 
             // --------------------------------------------------
             // Scroll handling (edge locking + buttons)
             // --------------------------------------------------
-
             container.addEventListener("scroll", () => {
                 requestAnimationFrame(() => {
                     clampScroll();
                     updateButtons();
                 });
 
-                clearTimeout(snapTimeout);
-                snapTimeout = setTimeout(snapToNearestCard, 200);
+                if (window.innerWidth > 768) {
+                    clearTimeout(snapTimeout);
+                    snapTimeout = setTimeout(snapToNearestCard, 200);
+                }
             });
 
             // --------------------------------------------------
             // Initial state
             // --------------------------------------------------
-
             container.scrollLeft = 0;
             updateButtons();
         });
     </script>
 
-
-
-
-    }
-</script>
     <script>
 
     </script>
