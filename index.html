@@ -17,6 +17,7 @@
             --muted: rgba(255, 255, 255, 0.85);
             --gold-strip-thickness: 20px;
         }
+
         .page-wrapper {
             border-left: var(--gold-strip-thickness) solid var(--gold);
             border-right: var(--gold-strip-thickness) solid var(--gold);
@@ -43,8 +44,8 @@
 
         html {
             scroll-behavior: smooth;
-            margin:0;
-            padding:0;
+            margin: 0;
+            padding: 0;
         }
 
         /* Scroll Progress */
@@ -160,8 +161,8 @@
             max-width: 1500px;
             max-height: 843px;
             aspect-ratio: 1500/843; /* Maintains the width:height ratio */
-            margin-top:0;
-            padding-top:0;
+            margin-top: 0;
+            padding-top: 0;
             background-image: url("img/ActualHeader.png");
             background-size: cover; /* Ensures the image covers the box */
             background-position: center;
@@ -314,7 +315,7 @@
             width: 100%;
             padding: 0;
             max-width: 1500px; /* same width as hero image */
-            margin-top:0;
+            margin-top: 0;
             border-radius: 16px; /* rounded corners for a card-like effect */
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* subtle shadow */
         }
@@ -768,6 +769,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             z-index: 10;
         }
+
         .scroll-btn {
             transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
         }
@@ -894,22 +896,24 @@
         .committee-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 40px; /* space between cards */
+            gap: 30px; /* space between cards */
             margin-top: 40px; /* space above the grid */
         }
-
         .committee-card {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+font-size: 20px;
+            height: 120px;
             background: var(--white);
             border-radius: 12px;
-            padding: 60px 20px; /* inner spacing */
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
 
+            text-decoration: none;
+            font-weight: 600;
+            color: black;
 
-        .committee-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
         }
 
         .committee-name {
@@ -983,14 +987,15 @@
         }
 
         /* Responsive */
-        @media (max-width: 1600px){
-    /* SECTION CONTAINERS */
-            section{
+        @media (max-width: 1600px) {
+            /* SECTION CONTAINERS */
+            section {
                 max-width: 1200px;
-            margin: 60px auto;
-                }
+                margin: 60px auto;
+            }
 
-}
+        }
+
         @media (max-width: 1200px) {
 
             /* HERO */
@@ -1074,9 +1079,10 @@
                 align-items: center;
                 gap: 25px;
             }
+
             .director-text,
             .intro-text {
-                order:1;
+                order: 1;
                 width: 90%;
                 text-align: center;
                 font-size: clamp(20px, 4vw, 28px);
@@ -1091,6 +1097,7 @@
                 margin: 0 auto;
                 border-radius: 12px;
             }
+
             .intro-photo img {
                 max-width: 600px;
             }
@@ -1099,6 +1106,7 @@
             .exec-card {
                 padding: 18px;
             }
+
             .big-four-card {
                 padding: 2px;
             }
@@ -1113,12 +1121,14 @@
             .schedule-table td {
                 padding: 14px;
             }
+
             .big-four-text {
                 font-size: 15px;
                 color: #ffffff;
                 line-height: 1.5;
                 margin: 0 auto;
             }
+
             /* COMMITTEES */
             .committee-grid {
                 grid-template-columns: repeat(4, 1fr);
@@ -1165,12 +1175,14 @@
                 margin-left: 15px;
                 margin-right: 15px;
             }
+
             .big-four-text {
                 font-size: 18px;
                 color: #ffffff;
                 line-height: 1.5;
                 margin: 0 auto;
             }
+
             .page-wrapper {
                 border-left: var(--gold-strip-thickness) solid var(--gold);
                 border-right: var(--gold-strip-thickness) solid var(--gold);
@@ -1306,9 +1318,10 @@
                 align-items: center;
                 gap: 25px;
             }
+
             .director-text,
             .intro-text {
-                order:1;
+                order: 1;
                 width: 90%;
                 text-align: center;
                 font-size: clamp(20px, 4vw, 28px);
@@ -1334,9 +1347,10 @@
             }
 
 
-            .intro-box,.director-box {
+            .intro-box, .director-box {
                 padding: 0px 10px;
             }
+
             .director-name {
                 font-size: 24px;
                 text-align: center;
@@ -1357,243 +1371,249 @@
                 font-size: clamp(14px, 3.2vw, 18px);
                 text-align: center;
             }
-            .lead{
+
+            .lead {
                 margin-top: 0;
             }
-            }
+        }
 
         @media (max-width: 480px) {
-            .exec-container{
+            .exec-container {
                 padding: 0 0;
                 scroll-behavior: smooth;
                 -webkit-overflow-scrolling: touch;
                 scroll-snap-type: x mandatory;
             }
 
-                .hero-box {
+            .hero-box {
 
-                    width: 100%;
-                    max-width: 1500px;
-                    height: 300px;
-                    background-image: url("img/smallerheader.png");
-                    background-size: cover; /* Ensures the image covers the box */
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                }
-                :root {
-                    --gold-strip-thickness: 15px;
-                }
-                .exec-card{
-                    scroll-snap-align: start;
-                }
-                .intro-box,
-                .big-four-box,
-                .exec-box,
-                .director-box,
-                .schedule-box,
-                .committees-box,
-                .conference-box {
-                    margin-left: 10px;
-                    margin-right: 10px;
-                    padding: 0 20px
-                }
-                .page-wrapper {
-                    border-left: var(--gold-strip-thickness) solid var(--gold);
-                    border-right: var(--gold-strip-thickness) solid var(--gold);
-                    min-height: 100vh;
-                    background: var(--bg);
-                }
-
-                /* ALL section titles – unified size */
-                .section-title,
-                .intro-title,
-                .director-title,
-                .big4-title,
-                .schedule-title,
-                .committees-title,
-                .conference-title,
-                .exec-title {
-                    font-size: clamp(32px, 5vw, 40px) !important;
-                    line-height: 1.2;
-                    text-align: center;
-                    margin-top: 20px;
-                }
-
-                .big-four-card, .exec-card, .committee-card {
-                    padding: 12px;
-                }
-
-                .schedule-table th, .schedule-table td {
-                    font-size: clamp(8px, 3vw, 14px);
-                    padding: 8px;
-                }
-
-                /* Shrink conference box to fit its content */
-                .conference-box {
-                    padding: 40px 20px; /* smaller padding around content */
-                    min-height: auto; /* remove minimum height */
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                /* Conference date fills the screen */
-                .conference-date {
-                    font-size: clamp(24px, 12vw, 35px); /* min 24px, max 60px, scales with screen */
-                    line-height: 1.1;
-                    text-align: center;
-                    padding: 0;
-                    white-space: normal; /* allows wrapping if needed */
-                    margin-bottom: 20px;
-                }
-
-                /* Conference quote lines */
-                .conference-quote .line1 {
-                    font-size: clamp(10px, 10vw, 20px); /* scales to fill screen */
-                    line-height: 1.1;
-                    text-align: center;
-                    margin: 0;
-                    padding: 0;
-                    white-space: normal; /* allows wrapping if needed */
-                }
-
-                /* Combine line2 and line3 into one block that fills the box */
-                .conference-quote .line2, .conference-quote .line3 {
-                    font-size: clamp(10px, 9vw, 20px); /* fills width dynamically */
-                    line-height: 1.1;
-                    text-align: center;
-                    margin: 0;
-                    padding: 0;
-                    white-space: normal;
-                    display: block;
-                }
-
-                /* Navigation adjustments - smaller */
-                .site-header {
-                    padding: 6px 0; /* minimal top/bottom padding */
-                }
-
-                .main-nav {
-                    gap: 8px; /* very small gap between links */
-                    margin-top: 4px; /* reduce margin above nav */
-                    flex-wrap: wrap; /* allow wrapping if needed */
-                    justify-content: center;
-                }
-
-                .main-nav a {
-                    font-size: clamp(10px, 3vw, 14px); /* smaller links */
-                    padding: 4px 8px; /* minimal padding */
-                }
-
-                .main-nav a::after {
-                    bottom: 1px; /* adjust underline for smaller links */
-                }
-
-                /* Container adjustments */
-                .conference-quote {
-                    width: 95%;
-                    margin: 0 auto;
-                }
-
-                .schedule-table {
-                    width: 100%; /* full width */
-                    font-size: clamp(12px, 3.5vw, 16px); /* scales nicely */
-                    margin-top: 20px; /* space from section title */
-                }
-
-                .intro-grid, .director-grid, .big-four-grid {
-                    grid-template-columns: 1fr; /* stack vertically */
-                }
-
-                .schedule-table th,
-                .schedule-table td {
-                    padding: 12px; /* slightly bigger for readability */
-                    font-size: clamp(12px, 3.5vw, 16px);
-                }
-
-                /* Optional: make rows taller for touch devices */
-                .schedule-table tr {
-                    height: auto;
-                }
-
-                .hero {
-                    max-height: 50vh;
-                }
-
-                .hero-box {
-                    max-height: 50vh;
-                }
-
-                .hero .hero-text {
-                    font-size: clamp(12px, 7vw, 36px);
-                }
-
-                /* Stack director and intro sections vertically */
-                .director-grid,
-                .intro-grid {
-                    flex-direction: column;
-                    align-items: center;
-                    gap: 20px;
-                }
-
-                /* Make images smaller to leave space from screen edges */
-                .director-photo img {
-                    width: 80%;
-                    max-width: 200px;
-                    height: auto;
-                    order: 2;
-                    margin: 0 auto;
-                    border-radius: 12px;
-                }
-                .intro-photo img {
-                    width: 80%;
-                    max-width: 300px;
-                    height: auto;
-                    order: 2;
-                    margin: 0 auto;
-                    border-radius: 12px;
-                }
-
-                /* Main text */
-                .director-text,
-                .intro-text {
-                    width: 90%;
-                    text-align: center;
-                    font-size: clamp( 10px,5vw, 15px); !important
-                    line-height: 1.4;
-                }
-
-                .intro-box,.director-box {
-                    padding: 0px 10px;
-                }
-
-                /* Director name - smaller and neat */
-                .director-name {
-                    font-size: 22px !important; /* fixed smaller size */
-                    text-align: center !important;
-                    margin-bottom: 12px;
-                }
-
-                /* Committees section - 3 columns but smaller cards */
-                .committee-grid {
-                    grid-template-columns: repeat(2, 1fr); /* 3 columns */
-                    gap: 20px; /* smaller gap between cards */
-                }
-
-                .committee-card {
-                    padding: 30px 10px; /* reduce padding */
-                    font-size: clamp(10px, 2.5vw, 14px); /* scale text for small cards */
-                }
-
-                .committee-name {
-                    font-size: clamp(12px, 3vw, 16px);
-                    text-align: center;
-                }
+                width: 100%;
+                max-width: 1500px;
+                height: 300px;
+                background-image: url("img/smallerheader.png");
+                background-size: cover; /* Ensures the image covers the box */
+                background-position: center;
+                background-repeat: no-repeat;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
             }
+
+            :root {
+                --gold-strip-thickness: 15px;
+            }
+
+            .exec-card {
+                scroll-snap-align: start;
+            }
+
+            .intro-box,
+            .big-four-box,
+            .exec-box,
+            .director-box,
+            .schedule-box,
+            .committees-box,
+            .conference-box {
+                margin-left: 10px;
+                margin-right: 10px;
+                padding: 0 20px
+            }
+
+            .page-wrapper {
+                border-left: var(--gold-strip-thickness) solid var(--gold);
+                border-right: var(--gold-strip-thickness) solid var(--gold);
+                min-height: 100vh;
+                background: var(--bg);
+            }
+
+            /* ALL section titles – unified size */
+            .section-title,
+            .intro-title,
+            .director-title,
+            .big4-title,
+            .schedule-title,
+            .committees-title,
+            .conference-title,
+            .exec-title {
+                font-size: clamp(32px, 5vw, 40px) !important;
+                line-height: 1.2;
+                text-align: center;
+                margin-top: 20px;
+            }
+
+            .big-four-card, .exec-card, .committee-card {
+                padding: 12px;
+            }
+
+            .schedule-table th, .schedule-table td {
+                font-size: clamp(8px, 3vw, 14px);
+                padding: 8px;
+            }
+
+            /* Shrink conference box to fit its content */
+            .conference-box {
+                padding: 40px 20px; /* smaller padding around content */
+                min-height: auto; /* remove minimum height */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Conference date fills the screen */
+            .conference-date {
+                font-size: clamp(24px, 12vw, 35px); /* min 24px, max 60px, scales with screen */
+                line-height: 1.1;
+                text-align: center;
+                padding: 0;
+                white-space: normal; /* allows wrapping if needed */
+                margin-bottom: 20px;
+            }
+
+            /* Conference quote lines */
+            .conference-quote .line1 {
+                font-size: clamp(10px, 10vw, 20px); /* scales to fill screen */
+                line-height: 1.1;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                white-space: normal; /* allows wrapping if needed */
+            }
+
+            /* Combine line2 and line3 into one block that fills the box */
+            .conference-quote .line2, .conference-quote .line3 {
+                font-size: clamp(10px, 9vw, 20px); /* fills width dynamically */
+                line-height: 1.1;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+                white-space: normal;
+                display: block;
+            }
+
+            /* Navigation adjustments - smaller */
+            .site-header {
+                padding: 6px 0; /* minimal top/bottom padding */
+            }
+
+            .main-nav {
+                gap: 8px; /* very small gap between links */
+                margin-top: 4px; /* reduce margin above nav */
+                flex-wrap: wrap; /* allow wrapping if needed */
+                justify-content: center;
+            }
+
+            .main-nav a {
+                font-size: clamp(10px, 3vw, 14px); /* smaller links */
+                padding: 4px 8px; /* minimal padding */
+            }
+
+            .main-nav a::after {
+                bottom: 1px; /* adjust underline for smaller links */
+            }
+
+            /* Container adjustments */
+            .conference-quote {
+                width: 95%;
+                margin: 0 auto;
+            }
+
+            .schedule-table {
+                width: 100%; /* full width */
+                font-size: clamp(12px, 3.5vw, 16px); /* scales nicely */
+                margin-top: 20px; /* space from section title */
+            }
+
+            .intro-grid, .director-grid, .big-four-grid {
+                grid-template-columns: 1fr; /* stack vertically */
+            }
+
+            .schedule-table th,
+            .schedule-table td {
+                padding: 12px; /* slightly bigger for readability */
+                font-size: clamp(12px, 3.5vw, 16px);
+            }
+
+            /* Optional: make rows taller for touch devices */
+            .schedule-table tr {
+                height: auto;
+            }
+
+            .hero {
+                max-height: 50vh;
+            }
+
+            .hero-box {
+                max-height: 50vh;
+            }
+
+            .hero .hero-text {
+                font-size: clamp(12px, 7vw, 36px);
+            }
+
+            /* Stack director and intro sections vertically */
+            .director-grid,
+            .intro-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            /* Make images smaller to leave space from screen edges */
+            .director-photo img {
+                width: 80%;
+                max-width: 200px;
+                height: auto;
+                order: 2;
+                margin: 0 auto;
+                border-radius: 12px;
+            }
+
+            .intro-photo img {
+                width: 80%;
+                max-width: 300px;
+                height: auto;
+                order: 2;
+                margin: 0 auto;
+                border-radius: 12px;
+            }
+
+            /* Main text */
+            .director-text,
+            .intro-text {
+                width: 90%;
+                text-align: center;
+                font-size: clamp(10px, 5vw, 15px);
+            !important line-height: 1.4;
+            }
+
+            .intro-box, .director-box {
+                padding: 0px 10px;
+            }
+
+            /* Director name - smaller and neat */
+            .director-name {
+                font-size: 22px !important; /* fixed smaller size */
+                text-align: center !important;
+                margin-bottom: 12px;
+            }
+
+            /* Committees section - 3 columns but smaller cards */
+            .committee-grid {
+                grid-template-columns: repeat(2, 1fr); /* 3 columns */
+                gap: 20px; /* smaller gap between cards */
+            }
+
+            .committee-card {
+                padding: 30px 10px; /* reduce padding */
+                font-size: clamp(10px, 2.5vw, 14px); /* scale text for small cards */
+            }
+
+            .committee-name {
+                font-size: clamp(12px, 3vw, 16px);
+                text-align: center;
+            }
+        }
     </style>
     <title>AKIS MUN 2026</title>
     <link rel="icon" href="img/Logo.png" type="image/icon type">
@@ -1615,395 +1635,433 @@
     </nav>
 </header>
 
-<div class = "page-wrapper">
-<main>
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-inner">
-            <div class="hero-box">
+<div class="page-wrapper">
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-inner">
+                <div class="hero-box">
+                </div>
+
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
-    <!-- Introduction Section -->
-    <section class="intro-box" id="intro">
-        <h3 class="intro-title">Introduction</h3>
-        <div class="intro-grid">
-            <div class="intro-text">
-                <p class="lead">Welcome to our Model United Nations program, where students become global leaders in
-                    action. Here, delegates debate, negotiate, and solve real-world issues, building skills in
-                    diplomacy, public speaking, and strategic thinking. Through dynamic conferences and engaging
-                    committee sessions, participants explore diverse perspectives, learn to build consensus, and lead
-                    with confidence. Our MUN empowers students to think critically, act responsibly, and make a
-                    meaningful impact on the world—today and tomorrow.</p>
+        <!-- Introduction Section -->
+        <section class="intro-box" id="intro">
+            <h3 class="intro-title">Introduction</h3>
+            <div class="intro-grid">
+                <div class="intro-text">
+                    <p class="lead">Welcome to our Model United Nations program, where students become global leaders in
+                        action. Here, delegates debate, negotiate, and solve real-world issues, building skills in
+                        diplomacy, public speaking, and strategic thinking. Through dynamic conferences and engaging
+                        committee sessions, participants explore diverse perspectives, learn to build consensus, and
+                        lead
+                        with confidence. AKIS MUN empowers students to think critically, act responsibly, and make a
+                        meaningful impact on the world—today and tomorrow.</p>
+                </div>
+                <div class="intro-photo">
+                    <img alt="Intro Placeholder" loading="lazy" src="img/Introduction.JPG" style="width:1000px;">
+                </div>
             </div>
-            <div class="intro-photo">
-                <img alt="Intro Placeholder" loading="lazy" src="img/Introduction.JPG" style="width:1000px;">
+        </section>
+
+        <!-- Message from Director -->
+        <section class="director-box" id="director">
+            <h2 class="director-title">Message From Director</h2>
+            <div class="director-grid">
+                <div class="director-text">
+                    <p class="director-excerpt">Welcome to AKISMUN 2026. As we come together for this year’s conference,
+                        I
+                        encourage all delegates to approach each discussion with curiosity, creativity, and a
+                        willingness to
+                        think differently. Model United Nations is more than a simulation — it’s a chance to explore
+                        real-world challenges through fresh ideas and innovative thinking. </p>
+                    <h3 class="director-name">- ADAM RAZAQ</h3>
+                </div>
+                <div class="director-photo">
+                    <img alt="Director Adam Razaq" loading="lazy" src="img/director.png" style="width:1000px;">
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Message from Director -->
-    <section class="director-box" id="director">
-        <h2 class="director-title">Message From Director</h2>
-        <div class="director-grid">
-            <div class="director-text">
-                <p class="director-excerpt">Welcome to AKISMUN 2025. As we come together for this year’s conference, I
-                    encourage all delegates to approach each discussion with curiosity, creativity, and a willingness to
-                    think differently. Model United Nations is more than a simulation — it’s a chance to explore
-                    real-world challenges through fresh ideas and innovative thinking. </p>
-                <h3 class="director-name">- ADAM RAZAQ</h3>
+
+        <!-- Big 4 Section -->
+        <section class="big-four-box" id="big-four">
+            <h2 class="section-title">THE BIG FOUR</h2>
+
+            <div class="big-four-grid">
+
+                <!-- MEMBER 1 -->
+                <div class="big-four-card">
+                    <img src="img/Urooj.jpg" class="big-four-photo">
+
+                    <div class="big-four-position">Secretary General</div>
+                    <div class="big-four-name">Urooj Fatima</div>
+
+                    <p class="big-four-text">
+                        Leads the MUN program, overseeing all committees and conferences while inspiring delegates to
+                        engage
+                        thoughtfully in global discussions. They ensure smooth operations and foster a culture of
+                        diplomacy
+                        and collaboration.
+                    </p>
+                </div>
+
+                <!-- MEMBER 2 -->
+                <div class="big-four-card">
+                    <img src="img/Sarika.jpg" class="big-four-photo">
+
+                    <div class="big-four-position">Deputy Secretary General</div>
+                    <div class="big-four-name">Sarika Maurya</div>
+
+                    <p class="big-four-text">
+                        Assists in managing the program, supporting logistics, communication, and committee
+                        coordination.
+                        They help maintain efficiency and create an environment where delegates can thrive.
+                    </p>
+                </div>
+
+                <!-- MEMBER 3 -->
+                <div class="big-four-card">
+                    <img src="img/Sadia.jpg" class="big-four-photo">
+
+                    <div class="big-four-position">President</div>
+                    <div class="big-four-name">Sadia Naveed</div>
+
+                    <p class="big-four-text">
+                        Guides debates in the General Assembly, ensuring productive discussions and fair participation.
+                        They
+                        promote leadership, respect, and collaborative problem-solving among delegates.
+                    </p>
+                </div>
+
+                <!-- MEMBER 4 -->
+                <div class="big-four-card">
+                    <img src="img/Ahmed.jpg" class="big-four-photo">
+
+                    <div class="big-four-position">Deputy President</div>
+                    <div class="big-four-name">Ahmed Charif</div>
+
+                    <p class="big-four-text">
+                        Supports the President in managing sessions, maintaining order, and facilitating effective
+                        debate.
+                        They help delegates engage confidently and work together to reach consensus.
+                    </p>
+                </div>
+
             </div>
-            <div class="director-photo">
-                <img alt="Director Adam Razaq" loading="lazy" src="img/director.png" style="width:1000px;">
+        </section>
+
+        <!-- Executive Team -->
+        <section class="exec-box" id="executive">
+            <h2 class="section-title">Executive Team</h2>
+
+            <div class="exec-wrapper" style="position: relative;">
+                <button class="scroll-btn scroll-btn-left" onclick="scrollExec(-1)">←</button>
+                <div class="exec-container" id="execContainer">
+                    <div class="exec-card"><img alt="" src="img/Hasan.jpg"><h5>Head of IT</h5>
+                        <p>Hasan Naqvi</p></div>
+                    <div class="exec-card"><img alt="" src="img/Ehtshaam.jpg"><h5>Deputy Head of IT</h5>
+                        <p>Ehtesham Khatri</p></div>
+                    <div class="exec-card"><img alt="" src="img/Bilal.jpg"><h5>Deputy Head of IT</h5>
+                        <p>Bilal Ramzan</p></div>
+                    <div class="exec-card"><img alt="" src="img/Aqsa.jpg"><h5>Head of Press</h5>
+                        <p>Aqsa Sajjad Ali</p></div>
+                    <div class="exec-card"><img alt="" src="img/Emaan.jpg"><h5>Deputy Head of Press</h5>
+                        <p>Eman Sajid</p></div>
+                    <div class="exec-card"><img alt="" src="img/Imran.jpg"><h5>Deputy Head of Press</h5>
+                        <p>Muhammad Imran</p></div>
+                    <div class="exec-card"><img alt="" src="img/Amshyar.jpg"><h5>Head of Admin</h5>
+                        <p>Amshyar Muhaimin</p></div>
+                    <div class="exec-card"><img alt="" src="img/Muneeba.jpg"><h5>Deputy Head of Admin</h5>
+                        <p>Muneeba Maryam</p></div>
+                    <div class="exec-card"><img alt="" src="img/Leilah.jpg"><h5>Deputy Head of Admin</h5>
+                        <p>Leilah Nimrah</p></div>
+                    <div class="exec-card"><img alt="" src="img/Jesran.jpg"><h5>Deputy Head of Admin</h5>
+                        <p>Jesran Fathima</p></div>
+                    <div class="exec-card"><img alt="" src="img/Maryam.jpg"><h5>Head of Communications</h5>
+                        <p>Maryam Soliman</p></div>
+                    <div class="exec-card"><img alt="" src="img/Firdah.jpg"><h5>Deputy Head of Communications</h5>
+                        <p>Firdha Razak</p></div>
+                    <div class="exec-card"><img alt="" src="img/Fatima.jpg"><h5>Head of Training</h5>
+                        <p>Fatima Ahmed</p></div>
+                    <div class="exec-card"><img alt="" src="img/Aayan.jpg"><h5>Deputy Head of Training</h5>
+                        <p>Aayan Asif</p></div>
+                    <div class="exec-card"><img alt="" src="img/Fakiha.jpg"><h5>Deputy Head of Training</h5>
+                        <p>Fakiha Tajelli</p></div>
+                </div>
+                <button class="scroll-btn scroll-btn-right" onclick="scrollExec(1)">→</button>
             </div>
-        </div>
-    </section>
+        </section>
 
-
-    <!-- Big 4 Section -->
-    <section class="big-four-box" id="big-four">
-        <h2 class="section-title">THE BIG FOUR</h2>
-
-        <div class="big-four-grid">
-
-            <!-- MEMBER 1 -->
-            <div class="big-four-card">
-                <img src="img/Urooj.jpg" class="big-four-photo">
-
-                <div class="big-four-position">Secretary General</div>
-                <div class="big-four-name">Urooj Fatima</div>
-
-                <p class="big-four-text">
-                    Leads the MUN program, overseeing all committees and conferences while inspiring delegates to engage
-                    thoughtfully in global discussions. They ensure smooth operations and foster a culture of diplomacy
-                    and collaboration.
-                </p>
+        <!-- Conference Section -->
+        <section class="conference-box" id="conference">
+            <h2 class="conference-title">Conference</h2>
+            <div class="conference-date">10 April 2026</div>
+            <div class="conference-quote">
+                <div class="line1">When the Wells run dry</div>
+                <div class="line2">“We borrowed this Earth from our children, and we have a responsibility to uphold”
+                </div>
             </div>
+        </section>
 
-            <!-- MEMBER 2 -->
-            <div class="big-four-card">
-                <img src="img/Sarika.jpg" class="big-four-photo">
+        <!-- Schedule Section -->
+        <section class="schedule-box" id="schedule">
+            <h2 class="schedule-title">Schedule</h2>
 
-                <div class="big-four-position">Deputy Secretary General</div>
-                <div class="big-four-name">Sarika Maurya</div>
+            <table class="schedule-table">
+                <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Event</th>
+                    <th>Location</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>07:15 TO 08:30</td>
+                    <td>Registration</td>
+                    <td>Reception</td>
+                </tr>
+                <tr>
+                    <td>08:30 TO 09:10</td>
+                    <td>Opening Ceremony</td>
+                    <td>Sports Hall</td>
+                </tr>
+                <tr>
+                    <td>09:10 TO 09:45</td>
+                    <td>Policy Statements</td>
+                    <td>Committee Rooms</td>
+                </tr>
+                <tr>
+                    <td>09:45 TO 11:30</td>
+                    <td>Lobbying</td>
+                    <td>Committee Rooms</td>
+                </tr>
+                <tr>
+                    <td>11:35 TO 12:30</td>
+                    <td>Lunch and Prayer</td>
+                    <td>Sports Hall and Prayer Room</td>
+                </tr>
+                <tr>
+                    <td>12:30 TO 13:40</td>
+                    <td>Committee Sessions 1</td>
+                    <td>Committee Rooms</td>
+                </tr>
+                <tr>
+                    <td>13:40 TO 14:40</td>
+                    <td>Committee Sessions 2</td>
+                    <td>Committee Rooms</td>
+                </tr>
+                <tr>
+                    <td>14:40 TO 15:00</td>
+                    <td>Break</td>
+                    <td>Committee Rooms</td>
+                </tr>
+                <tr>
+                    <td>15:00 TO 16:00</td>
+                    <td>Committee Sessions 3</td>
+                    <td>Committee Rooms</td>
+                </tr>
+                <tr>
+                    <td>16:00 TO 17:20</td>
+                    <td>Committee Sessions 4</td>
+                    <td>Committee Rooms</td>
+                </tr>
+                <tr>
+                    <td>17:20 TO 18:00</td>
+                    <td>Closing Ceremony</td>
+                    <td>Sports Hall</td>
+                </tr>
+                <tr>
+                    <td>18:00 TO 18:30</td>
+                    <td>Mahgrib Prayer</td>
+                    <td>Prayer Room</td>
+                </tr>
+                <tr>
+                    <td>18:30 TO 20:30</td>
+                    <td>Dinner</td>
+                    <td>Sports Hall</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
 
-                <p class="big-four-text">
-                    Assists in managing the program, supporting logistics, communication, and committee coordination.
-                    They help maintain efficiency and create an environment where delegates can thrive.
-                </p>
+        <!-- Committees Section -->
+
+        <section class="committees-box" id="committees">
+            <h2 class="committees-title">Committees</h2>
+
+            <div class="committee-grid">
+                <div>
+                    <div class="committee-card">
+                        <a href="https://drive.google.com/drive/folders/1pXkZxrfWOMmSgEdXgD3OBk_6TmHvqOJd?usp=sharing">
+                            <span class="default-text">Research Report</span>
+                        </a>
+                    </div>
+                    <div class="committee-name">General Assembly 1</div>
+                </div>
+
+                <div>
+                    <div class="committee-card">
+                        <a href="https://drive.google.com/drive/folders/1zV6Rrene7GfG5l31hlmr_-uHcutU4stP?usp=sharing">
+                            <span class="default-text">Research Report</span>
+                        </a>
+                    </div>
+                    <div class="committee-name">General Assembly 2</div>
+                </div>
+
+                <div>
+                    <div class="committee-card">
+                        <a href="https://drive.google.com/drive/folders/1_dj2vpnnwEIjcHJrTDWsvg_L10K7pcIP?usp=sharing">
+                            <span class="default-text">Research Report</span>
+                        </a>
+                    </div>
+                    <div class="committee-name">General Assembly 3</div>
+                </div>
+
+                <div>
+                    <div class="committee-card">
+                        <a href="https://drive.google.com/drive/folders/1C0IS8YqUGJNYvKvNXHxx_dfBL19mcwR8?usp=sharing">
+                            <span class="default-text">Research Report</span>
+                        </a>
+                    </div>
+                    <div class="committee-name">ECOSOC</div>
+                </div>
+
+                <div>
+                    <div class="committee-card">
+                        <a href="https://drive.google.com/drive/folders/1slo7l9jqzPZUCQmwVk2E_FFn02rL-M3x?usp=sharing">
+                            <span class="default-text">Research Report</span>
+                        </a>
+                    </div>
+                    <div class="committee-name">Security Council</div>
+                </div>
+
+                <div>
+                    <div class="committee-card">
+                        <a href="https://drive.google.com/drive/folders/1hXQD0f3u7jyAZ1cxMSg1_qsCIPU_Fg23?usp=sharing">
+                            <span class="default-text">Research Report</span>
+                        </a>
+                    </div>
+                    <div class="committee-name">CCPCJ</div>
+                </div>
+
+                <div>
+                    <div class="committee-card">
+                        <a href="https://drive.google.com/drive/folders/1xyltO1cqNH8oXec4EC3C7IMSTkqylFll?usp=sharing">
+                            <span class="default-text">Research Report</span>
+                        </a>
+                    </div>
+                    <div class="committee-name">HR Council</div>
+                </div>
             </div>
+        </section>
 
-            <!-- MEMBER 3 -->
-            <div class="big-four-card">
-                <img src="img/Sadia.jpg" class="big-four-photo">
-
-                <div class="big-four-position">President</div>
-                <div class="big-four-name">Sadia Naveed</div>
-
-                <p class="big-four-text">
-                    Guides debates in the General Assembly, ensuring productive discussions and fair participation. They
-                    promote leadership, respect, and collaborative problem-solving among delegates.
-                </p>
-            </div>
-
-            <!-- MEMBER 4 -->
-            <div class="big-four-card">
-                <img src="img/Ahmed.jpg" class="big-four-photo">
-
-                <div class="big-four-position">Deputy President</div>
-                <div class="big-four-name">Ahmed Charif</div>
-
-                <p class="big-four-text">
-                    Supports the President in managing sessions, maintaining order, and facilitating effective debate.
-                    They help delegates engage confidently and work together to reach consensus.
-                </p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Executive Team -->
-    <section class="exec-box" id="executive">
-        <h2 class="section-title">Executive Team</h2>
-
-        <div class="exec-wrapper" style="position: relative;">
-            <button class="scroll-btn scroll-btn-left" onclick="scrollExec(-1)">←</button>
-            <div class="exec-container" id="execContainer">
-                <div class="exec-card"><img alt="" src="img/Hasan.jpg"><h5>Head of IT</h5>
-                    <p>Hasan Naqvi</p></div>
-                <div class="exec-card"><img alt="" src="img/Ehtshaam.jpg"><h5>Deputy Head of IT</h5>
-                    <p>Ehtesham Khatri</p></div>
-                <div class="exec-card"><img alt="" src="img/Bilal.jpg"><h5>Deputy Head of IT</h5>
-                    <p>Bilal Ramzan</p></div>
-                <div class="exec-card"><img alt="" src="img/Aqsa.jpg"><h5>Head of Press</h5>
-                    <p>Aqsa Sajjad Ali</p></div>
-                <div class="exec-card"><img alt="" src="img/Emaan.jpg"><h5>Deputy Head of Press</h5>
-                    <p>Eman Sajid</p></div>
-                <div class="exec-card"><img alt="" src="img/Imran.jpg"><h5>Deputy Head of Press</h5>
-                    <p>Muhammad Imran</p></div>
-                <div class="exec-card"><img alt="" src="img/Amshyar.jpg"><h5>Head of Admin</h5>
-                    <p>Amshyar Muhaimin</p></div>
-                <div class="exec-card"><img alt="" src="img/Muneeba.jpg"><h5>Deputy Head of Admin</h5>
-                    <p>Muneeba Maryam</p></div>
-                <div class="exec-card"><img alt="" src="img/Leilah.jpg"><h5>Deputy Head of Admin</h5>
-                    <p>Leilah Nimrah</p></div>
-                <div class="exec-card"><img alt="" src="img/Jesran.jpg"><h5>Deputy Head of Admin</h5>
-                    <p>Jesran Fathima</p></div>
-                <div class="exec-card"><img alt="" src="img/Maryam.jpg"><h5>Head of Communications</h5>
-                    <p>Maryam Soliman</p></div>
-                <div class="exec-card"><img alt="" src="img/Firdah.jpg"><h5>Deputy Head of Communications</h5>
-                    <p>Firdha Razak</p></div>
-                <div class="exec-card"><img alt="" src="img/Fatima.jpg"><h5>Head of Training</h5>
-                    <p>Fatima Ahmed</p></div>
-                <div class="exec-card"><img alt="" src="img/Aayan.jpg"><h5>Deputy Head of Training</h5>
-                    <p>Aayan Asif</p></div>
-                <div class="exec-card"><img alt="" src="img/Fakiha.jpg"><h5>Deputy Head of Training</h5>
-                    <p>Fakiha Tajelli</p></div>
-            </div>
-            <button class="scroll-btn scroll-btn-right" onclick="scrollExec(1)">→</button>
-        </div>
-    </section>
-
-    <!-- Conference Section -->
-    <section class="conference-box" id="conference">
-        <h2 class="conference-title">Conference</h2>
-        <div class="conference-date">18 April 2026</div>
-        <div class="conference-quote">
-            <div class="line1">When the Wells run dry</div>
-            <div class="line2">“We borrowed this Earth from our children, and we have a responsibility to uphold”</div>
-        </div>
-    </section>
-
-    <!-- Schedule Section -->
-    <section class="schedule-box" id="schedule">
-        <h2 class="schedule-title">Schedule</h2>
-
-        <table class="schedule-table">
-            <thead>
-            <tr>
-                <th>Time</th>
-                <th>Event</th>
-                <th>Location</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>07:15 TO 08:30</td>
-                <td>Registration</td>
-                <td>Reception</td>
-            </tr>
-            <tr>
-                <td>08:30 TO 09:10</td>
-                <td>Opening Ceremony</td>
-                <td>Sports Hall</td>
-            </tr>
-            <tr>
-                <td>09:10 TO 09:45</td>
-                <td>Policy Statements</td>
-                <td>Committee Rooms</td>
-            </tr>
-            <tr>
-                <td>09:45 TO 11:30</td>
-                <td>Lobbying</td>
-                <td>Committee Rooms</td>
-            </tr>
-            <tr>
-                <td>11:35 TO 12:30</td>
-                <td>Lunch and Prayer</td>
-                <td>Sports Hall and Prayer Room</td>
-            </tr>
-            <tr>
-                <td>12:30 TO 13:40</td>
-                <td>Committee Sessions 1</td>
-                <td>Committee Rooms</td>
-            </tr>
-            <tr>
-                <td>13:40 TO 14:40</td>
-                <td>Committee Sessions 2</td>
-                <td>Committee Rooms</td>
-            </tr>
-            <tr>
-                <td>14:40 TO 15:00</td>
-                <td>Break</td>
-                <td>Committee Rooms</td>
-            </tr>
-            <tr>
-                <td>15:00 TO 16:00</td>
-                <td>Committee Sessions 3</td>
-                <td>Committee Rooms</td>
-            </tr>
-            <tr>
-                <td>16:00 TO 17:20</td>
-                <td>Committee Sessions 4</td>
-                <td>Committee Rooms</td>
-            </tr>
-            <tr>
-                <td>17:20 TO 18:00</td>
-                <td>Closing Ceremony</td>
-                <td>Sports Hall</td>
-            </tr>
-            <tr>
-                <td>18:00 TO 18:30</td>
-                <td>Mahgrib Prayer</td>
-                <td>Prayer Room</td>
-            </tr>
-            <tr>
-                <td>18:30 TO 20:30</td>
-                <td>Dinner</td>
-                <td>Sports Hall</td>
-            </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <!-- Committees Section -->
-
-    <section class="committees-box" id="committees">
-        <h2 class="committees-title">Committees</h2>
-
-        <div class="committee-grid">
-            <div>
-                <div class="committee-card"></div>
-                <div class="committee-name">General Assembly 1</div>
-            </div>
-            <div>
-                <div class="committee-card"></div>
-                <div class="committee-name">General Assembly 2</div>
-            </div>
-            <div>
-                <div class="committee-card"></div>
-                <div class="committee-name">General Assembly 3</div>
-            </div>
-            <div>
-                <div class="committee-card"></div>
-                <div class="committee-name">General Assembly 4</div>
-            </div>
-            <div>
-                <div class="committee-card"></div>
-                <div class="committee-name">ECOSOC</div>
-            </div>
-            <div>
-                <div class="committee-card"></div>
-                <div class="committee-name">Security Council</div>
-            </div>
-            <div>
-                <div class="committee-card"></div>
-                <div class="committee-name">CCPCJ</div>
-            </div>
-            <div>
-                <div class="committee-card"></div>
-                <div class="committee-name">HR Council</div>
-            </div>
-        </div>
-    </section>
-
-</main>
+    </main>
 
 
+    <script>
+        // Smooth scroll with offset for navigation menu
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const targetID = this.getAttribute('href');
+                if (targetID.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(targetID);
+                    const offset = 140;
 
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - offset;
 
-<script>
-    // Smooth scroll with offset for navigation menu
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-        link.addEventListener('click', function (e) {
-            const targetID = this.getAttribute('href');
-            if (targetID.length > 1) {
-                e.preventDefault();
-                const target = document.querySelector(targetID);
-                const offset = 140;
-
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-            }
-        });
-    });
-
-    // Highlight active nav link while scrolling
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll(".main-nav a");
-
-    window.addEventListener("scroll", () => {
-        let current = "";
-        const scrollY = window.pageYOffset;
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 200;
-            const sectionHeight = section.offsetHeight;
-
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                current = section.getAttribute("id");
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === "#" + current) {
-                link.classList.add("active");
-            }
-        });
-    });
-</script>
-<button id="toTop">↑</button>
-<script>
-    const toTopBtn = document.getElementById("toTop");
-
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 600) {
-            toTopBtn.style.display = "block";
-        } else {
-            toTopBtn.style.display = "none";
-        }
-    });
-
-    toTopBtn.addEventListener("click", () => {
-        window.scrollTo({top: 0, behavior: "smooth"});
-    });
-</script>
-
-<script>
-    // Smooth scroll active highlight
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.main-nav a');
-
-
-    window.addEventListener('scroll', () => {
-        let current = '';
-
-
-        sections.forEach(sec => {
-            const top = window.scrollY;
-            const offset = sec.offsetTop - 150;
-            const height = sec.offsetHeight;
-            if (top >= offset && top < offset + height) {
-                current = sec.getAttribute('id');
-            }
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
         });
 
+        // Highlight active nav link while scrolling
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll(".main-nav a");
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + current) {
-                link.classList.add('active');
+        window.addEventListener("scroll", () => {
+            let current = "";
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 200;
+                const sectionHeight = section.offsetHeight;
+
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === "#" + current) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    </script>
+    <button id="toTop">↑</button>
+    <script>
+        const toTopBtn = document.getElementById("toTop");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 600) {
+                toTopBtn.style.display = "block";
+            } else {
+                toTopBtn.style.display = "none";
             }
         });
-    });
-</script>
-<script>
-    window.addEventListener('scroll', function () {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        document.getElementById('progressBar').style.width = scrolled + '%';
-    });
+
+        toTopBtn.addEventListener("click", () => {
+            window.scrollTo({top: 0, behavior: "smooth"});
+        });
+    </script>
+
+    <script>
+        // Smooth scroll active highlight
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.main-nav a');
+
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+
+            sections.forEach(sec => {
+                const top = window.scrollY;
+                const offset = sec.offsetTop - 150;
+                const height = sec.offsetHeight;
+                if (top >= offset && top < offset + height) {
+                    current = sec.getAttribute('id');
+                }
+            });
+
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+    <script>
+        window.addEventListener('scroll', function () {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
         function scrollExec(direction) {
             const container = document.getElementById('execContainer');
             const card = container.querySelector('.exec-card');
@@ -2018,7 +2076,7 @@
                 behavior: 'smooth'
             });
         }
-</script>
+    </script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const container = document.querySelector(".exec-container");
@@ -2082,7 +2140,7 @@
 
                 clearTimeout(snapTimeout);
                 snapTimeout = setTimeout(snapToNearestCard, 200);
-            }, { passive: false });
+            }, {passive: false});
 
             // --------------------------------------------------
             // Buttons → one card at a time
@@ -2104,10 +2162,20 @@
             // --------------------------------------------------
             // Drag detection (disable snap while dragging)
             // --------------------------------------------------
-            container.addEventListener("mousedown", () => { isDragging = true; });
-            container.addEventListener("touchstart", () => { isDragging = true; }, { passive: true });
-            window.addEventListener("mouseup", () => { isDragging = false; snapToNearestCard(); });
-            container.addEventListener("touchend", () => { isDragging = false; snapToNearestCard(); });
+            container.addEventListener("mousedown", () => {
+                isDragging = true;
+            });
+            container.addEventListener("touchstart", () => {
+                isDragging = true;
+            }, {passive: true});
+            window.addEventListener("mouseup", () => {
+                isDragging = false;
+                snapToNearestCard();
+            });
+            container.addEventListener("touchend", () => {
+                isDragging = false;
+                snapToNearestCard();
+            });
 
             // --------------------------------------------------
             // Scroll handling (edge locking + buttons)
@@ -2137,8 +2205,8 @@
     </script>
 
 </div>
-    
-<div class = footer>
+
+<div class=footer>
     <footer class="site-footer" id="footer">
         &copy; 2026 AKISMUN. All Rights Reserved. &nbsp; | &nbsp; <a href="https://www.instagram.com/akismun26/"
                                                                      style="color:#c39f54;text-decoration:none;">Instagram</a>
