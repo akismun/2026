@@ -817,7 +817,7 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 40px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* subtle shadow around table */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* subtle shadow around table */
             border-radius: 8px;
             overflow: hidden; /* ensure rounded corners apply */
         }
@@ -827,20 +827,20 @@
             border: 1px solid #000; /* Black border */
             padding: 14px;
             text-align: center;
-            background-color: #ffffff; /* White background */
-            color: #000000; /* Black text */
+            background-color: rgba(200,168,109,0.2); /* White background */
+            color: #fff; /* Black text */
             transition: background 0.3s, transform 0.2s;
             font-size: 25px;
         }
 
         .schedule-table th {
-            background-color: #ffffff; /* White header background */
-            color: #000000; /* Black header text */
+            background-color: rgba(200,168,109,0.2); /* White header background */
+            color: #fff; /* Black header text */
             font-weight: 700;
         }
 
         .schedule-table tr:hover td {
-            background-color: #f2f2f2; /* Light grey on hover for row highlight */
+            background-color: rgba(200,168,109,0.4); /* Light grey on hover for row highlight */
             transform: scale(1.01); /* subtle zoom effect on hover */
 
         }
@@ -906,7 +906,7 @@
 
         .committee-card {
             flex: 0 0 700px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(19,53,98, 0.3);
             border-radius: 12px;
             padding: 30px;
             color: #fff;
@@ -950,10 +950,9 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100px;
+            height: 30px;
             text-decoration: underline;
-            color: #233248;
-            padding: 20px;
+            color: #C8A86D ;
         }
 
         .committee-card h5 {
@@ -966,7 +965,7 @@
 
         .committee-card p {
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 500;
             margin: 0;
         }
 
@@ -978,7 +977,6 @@
 
         .committee-card {
             flex: 0 0 320px;
-            background: #c09c53;
             border-radius: 12px;
             padding: 15px;
             text-align: center;
@@ -1006,23 +1004,24 @@
         }
 
         .chair-section h6 {
-            font-size: 14px;
+            font-size: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-top: 30px;
             margin-bottom: 6px;
-            color: #232323;
+            color: #fff;
         }
 
         .chair-section h5 {
-            font-size: 20px;
+            font-size: 15px;
             font-weight: 700;
             margin-top: 8px;
             margin-bottom: 20px;
-            color: #233248;
+            color: #C8A86D ;
         }
 
         .chair-section p {
-            font-size: 14px;
+            font-size: 17px;
             line-height: 1.4;
             margin: 0;
         }
