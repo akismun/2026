@@ -887,6 +887,50 @@
 
 
         /* Committees Section */
+        .committee-wrapper {
+            position: relative;
+        }
+
+        .committee-container {
+            display: flex;
+            gap: 40px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 20px 60px;
+        }
+
+        .committee-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .committee-card {
+            flex: 0 0 700px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 30px;
+            color: #fff;
+            scroll-snap-align: center;
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+        }
+
+        .committee-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), 0 0 16px #d4b168;
+            filter: drop-shadow(0 0 16px #d4b168);
+        }
+
+        .chairs-row {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .chair-section {
+            flex: 1;
+            text-align: center;
+        }
+
         .committees-box {
             background: #233248;
             color: #fff;
@@ -894,58 +938,92 @@
         }
 
         .committee-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px; /* space between cards */
-            margin-top: 40px; /* space above the grid */
-        }
-
-        .default-text {
-            color: #233248;
-        }
-
-        .committee-card {
-            position: relative;
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             justify-content: center;
-            font-size: 20px;
-            height: 120px;
-            background: #c09c53;
-            border-radius: 12px;
-
-            text-decoration: none;
-            font-weight: 600;
-            color: black;
-
-
-            overflow: hidden;
+            gap: 30px;
         }
 
-        .committee-name {
-            text-align: center;
-            margin-top: 8px;
-            font-weight: 300;
-            font-size: 20px;
-            color: #ffffff;
-            letter-spacing: 1px; /* spacing between letters */
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5); /* subtle shadow for depth */
-            transition: color 0.3s ease, transform 0.3s ease;
-            font-family: 'Georgia', serif;
+
+        .committee-link {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            text-decoration: underline;
+            color: #233248;
+            padding: 20px;
         }
 
-        .committee-name:hover {
-            color: #d4b168; /* golden highlight on hover */
-            transform: translateY(-2px);
-        }
-
-        .committee-card h4 {
-            color: #111;
-            margin-bottom: 6px;
+        .committee-card h5 {
+            font-size: 22px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
         }
 
         .committee-card p {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .committee-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), 0 0 16px #d4b168;
+            filter: drop-shadow(0 0 16px #d4b168);
+        }
+
+        .committee-card {
+            flex: 0 0 320px;
+            background: #c09c53;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
             color: #fff;
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+        }
+
+        .committee-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4), 0 0 16px #d4b168;
+            filter: drop-shadow(0 0 16px #d4b168);
+        }
+
+        .chair-section {
+            flex: 1;
+            justify-content: center;
+            margin-bottom: 18px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .chair-section:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .chair-section h6 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            color: #232323;
+        }
+
+        .chair-section h5 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            color: #233248;
+        }
+
+        .chair-section p {
+            font-size: 14px;
+            line-height: 1.4;
             margin: 0;
         }
 
@@ -1896,74 +1974,178 @@
             </table>
         </section>
 
-        <!-- Committees Section -->
 
         <section class="committees-box" id="committees">
             <h2 class="committees-title">Committees</h2>
+            <div class="committee-wrapper">
+                <button class="scroll-btn scroll-btn-left" onclick="scrollCommittees(-1)">←</button>
 
-            <div class="committee-grid">
-                <div>
-                    <div class="committee-card">
-                        <a href="https://drive.google.com/drive/folders/1pXkZxrfWOMmSgEdXgD3OBk_6TmHvqOJd?usp=sharing">
-                            <span class="default-text">Research Report</span>
-                        </a>
-                    </div>
-                    <div class="committee-name">General Assembly 1</div>
-                </div>
+                <div class="committee-container" id="committeeContainer">
 
-                <div>
-                    <div class="committee-card">
-                        <a href="https://drive.google.com/drive/folders/1zV6Rrene7GfG5l31hlmr_-uHcutU4stP?usp=sharing">
-                            <span class="default-text">Research Report</span>
-                        </a>
-                    </div>
-                    <div class="committee-name">General Assembly 2</div>
-                </div>
+                        <div class="committee-card">
+                            <h5>General Assembly 1</h5>
+                            <div class="committee-inner">
+                                <div class="chair-section">
+                                    <h6>Head Chair</h6>
+                                    <h5>Dhiya Althisya Putri</h5>
+                                    <p>Strengthening international legal and normative frameworks to address cyber
+                                        warfare and its implications for global security</p>
+                                </div>
 
-                <div>
-                    <div class="committee-card">
-                        <a href="https://drive.google.com/drive/folders/1_dj2vpnnwEIjcHJrTDWsvg_L10K7pcIP?usp=sharing">
-                            <span class="default-text">Research Report</span>
-                        </a>
-                    </div>
-                    <div class="committee-name">General Assembly 3</div>
-                </div>
+                                <div class="chair-section">
+                                    <h6>Deputy Chair</h6>
+                                    <h5>Jannat Sajid</h5>
+                                    <p>Addressing the rising military presence and territorial disputes within the
+                                        arctic</p>
+                                </div>
 
-                <div>
-                    <div class="committee-card">
-                        <a href="https://drive.google.com/drive/folders/1C0IS8YqUGJNYvKvNXHxx_dfBL19mcwR8?usp=sharing">
-                            <span class="default-text">Research Report</span>
-                        </a>
-                    </div>
-                    <div class="committee-name">ECOSOC</div>
-                </div>
+                            </div>
+                            <a href="https://drive.google.com/drive/folders/1pXkZxrfWOMmSgEdXgD3OBk_6TmHvqOJd?usp=sharing"
+                               class="committee-link">
+                                <p>Research Report</p>
+                            </a>
+                        </div>
+                        <div class="committee-card">
+                            <h5>General Assembly 2</h5>
+                            <div class="committee-inner">
+                                <div class="chair-section">
+                                    <h6>Head Chair</h6>
+                                    <h5>Rishi Sharma</h5>
+                                    <p>The issue of developing Mechanisms aimed at converting sovereign debt into
+                                        climate-action investments for vulnerable nations</p>
+                                </div>
 
-                <div>
-                    <div class="committee-card">
-                        <a href="https://drive.google.com/drive/folders/1slo7l9jqzPZUCQmwVk2E_FFn02rL-M3x?usp=sharing">
-                            <span class="default-text">Research Report</span>
-                        </a>
-                    </div>
-                    <div class="committee-name">Security Council</div>
-                </div>
+                                <div class="chair-section">
+                                    <h6>Deputy Chair</h6>
+                                    <h5>Muhammad Ibrahim Dar</h5>
+                                    <p>Balancing innovation against the risks of money laundering, tax evasion, and
+                                        economic volatility</p>
+                                </div>
+                                <a href="https://drive.google.com/drive/folders/1zV6Rrene7GfG5l31hlmr_-uHcutU4stP?usp=sharing"
+                                   class="committee-link">
+                                    <p>Research Report</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="committee-card">
+                            <h5>General Assembly 3</h5>
+                            <div class="committee-inner">
+                                <div class="chair-section">
+                                    <h6>Head Chair</h6>
+                                    <h5>Izzyan Jassim</h5>
+                                    <p>The issue of Safeguarding historical monuments, artifacts and intangible forms of
+                                        heritage from destruction and attempts at illicit trafficking</p>
+                                </div>
 
-                <div>
-                    <div class="committee-card">
-                        <a href="https://drive.google.com/drive/folders/1hXQD0f3u7jyAZ1cxMSg1_qsCIPU_Fg23?usp=sharing">
-                            <span class="default-text">Research Report</span>
-                        </a>
-                    </div>
-                    <div class="committee-name">CCPCJ</div>
-                </div>
+                                <div class="chair-section">
+                                    <h6>Deputy Chair</h6>
+                                    <h5>Fathy Rizk</h5>
+                                    <p>Integrating mental health services into public health systems with a focus on
+                                        crisis response scenarios</p>
+                                </div>
 
-                <div>
-                    <div class="committee-card">
-                        <a href="https://drive.google.com/drive/folders/1xyltO1cqNH8oXec4EC3C7IMSTkqylFll?usp=sharing">
-                            <span class="default-text">Research Report</span>
-                        </a>
-                    </div>
-                    <div class="committee-name">HR Council</div>
+                                <a href="https://drive.google.com/drive/folders/1_dj2vpnnwEIjcHJrTDWsvg_L10K7pcIP?usp=sharing"
+                                   class="committee-link">
+                                    <p>Research Report</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="committee-card">
+                            <h5>ECOSOC</h5>
+                            <div class="committee-inner">
+                                <div class="chair-section">
+                                    <h6>Head Chair</h6>
+                                    <h5>Alannah Maria Saji</h5>
+                                    <p>The issue of achieving a balance between urban growth, green infrastructure,
+                                        affordable housing and climate resilience</p>
+                                </div>
+
+                                <div class="chair-section">
+                                    <h6>Deputy Chair</h6>
+                                    <h5>Joseph Whitehead</h5>
+                                    <p>Ensuring access to technology for developing nations in post-conflict states</p>
+                                </div>
+
+                                <a href="https://drive.google.com/drive/folders/1C0IS8YqUGJNYvKvNXHxx_dfBL19mcwR8?usp=sharing"
+                                   class="committee-link">
+
+                                    <p>Research Report</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="committee-card">
+                            <h5>Security Council</h5>
+                            <div class="committee-inner">
+                                <div class="chair-section">
+                                    <h6>Head Chair</h6>
+                                    <h5>Afra Sakkeer</h5>
+                                    <p>Addressing the intersection of climate change, armed conflict and humanitarian
+                                        crises in Ethiopia, Somalia and Sudan</p>
+                                </div>
+
+                                <div class="chair-section">
+                                    <h6>Deputy Chair</h6>
+                                    <h5>Hadiya Odakkam Kuzhiyil</h5>
+                                    <p>The issue of the recent nuclear proliferation and advancement in DPRK’s missile
+                                        program</p>
+                                </div>
+                                <a href="https://drive.google.com/drive/folders/1slo7l9jqzPZUCQmwVk2E_FFn02rL-M3x?usp=sharing"
+                                   class="committee-link">
+
+                                    <p>Research Report</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="committee-card">
+                            <h5>CCPCJ</h5>
+                            <div class="committee-inner">
+                                <div class="chair-section">
+                                    <h6>Head Chair</h6>
+                                    <h5>Akshya Konna</h5>
+                                    <p>Issue of Strengthening international cooperation to combat illicit organ trade
+                                        and protect victims</p>
+                                </div>
+
+                                <div class="chair-section">
+                                    <h6>Deputy Chair</h6>
+                                    <h5>Muhammad Riyadh</h5>
+                                    <p>Promoting rehabilitation, reducing recidivism and addressing overcrowding in
+                                        global prison systems.</p>
+                                </div>
+                                <a href="https://drive.google.com/drive/folders/1hXQD0f3u7jyAZ1cxMSg1_qsCIPU_Fg23?usp=sharing"
+                                   class="committee-link">
+
+                                    <p>Research Report</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="committee-card">
+                            <h5>HR Council</h5>
+                            <div class="committee-inner">
+                                <div class="chair-section">
+                                    <h6>Head Chair</h6>
+                                    <h5>Niya Fathima</h5>
+                                    <p>The issue of ensuring the equal prioritization, protection, accessibility and
+                                        inclusion of all parties in humanitarian responses (i.e: both parties in
+                                        conflicts, individuals with disabilities, etc.)</p>
+                                </div>
+
+                                <div class="chair-section">
+                                    <h6>Deputy Chair</h6>
+                                    <h5>Helen Mangue</h5>
+                                    <p>Examining state obligations to protect water resources and communities affected
+                                        by related industries (mining, drilling & agriculture)</p>
+                                </div>
+                                <a href="https://drive.google.com/drive/folders/1xyltO1cqNH8oXec4EC3C7IMSTkqylFll?usp=sharing"
+                                   class="committee-link">
+
+                                    <p>Research Report</p>
+                                </a>
+                            </div>
+                        </div>
+
                 </div>
+                <button class="scroll-btn scroll-btn-right" onclick="scrollCommittees(1)">→</button>
             </div>
         </section>
 
@@ -2015,6 +2197,20 @@
                 }
             });
         });
+        function scrollCommittees(direction) {
+                const container = document.getElementById('committeeContainer');
+                const card = container.querySelector('.committee-card');
+
+                if (!card) return;
+
+                const gap = parseInt(getComputedStyle(container).gap) || 0;
+                const scrollAmount = card.offsetWidth + gap;
+
+                container.scrollBy({
+                    left: direction * scrollAmount,
+                    behavior: 'smooth'
+                });
+            }
     </script>
     <button id="toTop">↑</button>
     <script>
@@ -2083,11 +2279,139 @@
                 behavior: 'smooth'
             });
         }
+        window.addEventListener('scroll', function () {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const container = document.querySelector(".exec-container");
             const cards = Array.from(container.querySelectorAll(".exec-card"));
+            const prevBtn = document.getElementById("scroll-btn-left");
+            const nextBtn = document.getElementById("scroll-btn-right");
+
+            if (!container || cards.length === 0) return;
+
+            let isDragging = false;
+            let snapTimeout = null;
+
+            // --------------------------------------------------
+            // Helpers
+            // --------------------------------------------------
+            function cardWidth() {
+                return cards[0].offsetWidth +
+                    parseInt(getComputedStyle(container).gap || 0);
+            }
+
+            function maxScroll() {
+                return container.scrollWidth - container.clientWidth;
+            }
+
+            function clampScroll() {
+                if (container.scrollLeft < 0) container.scrollLeft = 0;
+                if (container.scrollLeft > maxScroll()) container.scrollLeft = maxScroll();
+            }
+
+            function updateButtons() {
+                if (!prevBtn || !nextBtn) return;
+                prevBtn.disabled = container.scrollLeft <= 2;
+                nextBtn.disabled = container.scrollLeft >= maxScroll() - 2;
+            }
+
+            function snapToNearestCard() {
+                if (isDragging) return;
+                if (window.innerWidth <= 768) return; // disable snapping on mobile
+
+                const width = cardWidth();
+                const index = Math.round(container.scrollLeft / width);
+                const target = index * width;
+
+                container.scrollTo({
+                    left: Math.min(Math.max(target, 0), maxScroll()),
+                    behavior: "smooth"
+                });
+            }
+
+            // --------------------------------------------------
+            // Wheel scroll → horizontal (DESKTOP ONLY)
+            // --------------------------------------------------
+            container.addEventListener("wheel", (e) => {
+                if (window.innerWidth <= 768) return; // disable wheel on mobile
+
+                e.preventDefault();
+                container.scrollBy({
+                    left: Math.sign(e.deltaY) * cardWidth(),
+                    behavior: "smooth"
+                });
+
+                clearTimeout(snapTimeout);
+                snapTimeout = setTimeout(snapToNearestCard, 200);
+            }, {passive: false});
+
+            // --------------------------------------------------
+            // Buttons → one card at a time
+            // --------------------------------------------------
+            prevBtn?.addEventListener("click", () => {
+                container.scrollBy({
+                    left: -cardWidth(),
+                    behavior: "smooth"
+                });
+            });
+
+            nextBtn?.addEventListener("click", () => {
+                container.scrollBy({
+                    left: cardWidth(),
+                    behavior: "smooth"
+                });
+            });
+
+            // --------------------------------------------------
+            // Drag detection (disable snap while dragging)
+            // --------------------------------------------------
+            container.addEventListener("mousedown", () => {
+                isDragging = true;
+            });
+            container.addEventListener("touchstart", () => {
+                isDragging = true;
+            }, {passive: true});
+            window.addEventListener("mouseup", () => {
+                isDragging = false;
+                snapToNearestCard();
+            });
+            container.addEventListener("touchend", () => {
+                isDragging = false;
+                snapToNearestCard();
+            });
+
+            // --------------------------------------------------
+            // Scroll handling (edge locking + buttons)
+            // --------------------------------------------------
+            container.addEventListener("scroll", () => {
+                requestAnimationFrame(() => {
+                    clampScroll();
+                    updateButtons();
+                });
+
+                if (window.innerWidth > 768) {
+                    clearTimeout(snapTimeout);
+                    snapTimeout = setTimeout(snapToNearestCard, 200);
+                }
+            });
+
+            // --------------------------------------------------
+            // Initial state
+            // --------------------------------------------------
+            container.scrollLeft = 0;
+            updateButtons();
+        });
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.querySelector(".committee-container");
+            const cards = Array.from(container.querySelectorAll(".committee-card"));
             const prevBtn = document.getElementById("scroll-btn-left");
             const nextBtn = document.getElementById("scroll-btn-right");
 
